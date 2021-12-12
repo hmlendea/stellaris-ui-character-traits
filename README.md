@@ -1,3 +1,5 @@
+[![Latest GitHub release](https://img.shields.io/github/v/release/hmlendea/stellaris-ui-character-traits)](https://github.com/hmlendea/stellaris-ui-character-traits/releases/latest)
+
 # About
 
 Mod that adds various new character traits to Stellaris.
