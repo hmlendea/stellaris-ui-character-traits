@@ -3,4 +3,4 @@ path="mod/ui-character-traits"
 tags={
     "Characters"
 }
-supported_version="2.6.*"
+supported_version="3.*.*"
