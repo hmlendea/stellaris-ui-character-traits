@@ -1,1 +1,3 @@
-# stellaris-ui-character-traits
+# About
+
+Mod that adds various new character traits to Stellaris.
