@@ -11,10 +11,10 @@ ui_trait_governor_engineer = {
         NOT = {
             from = {
                 OR = {
-                    has_ethic = "leader_trait_intellectual"
-                    has_ethic = "auth_machine_intelligence"
-                    has_ethic = "ui_trait_governor_physicist"
-                    has_ethic = "ui_trait_governor_sociologist"
+                    has_trait = "leader_trait_intellectual"
+                    has_authority = "auth_machine_intelligence"
+                    has_trait = "ui_trait_governor_physicist"
+                    has_trait = "ui_trait_governor_sociologist"
                 }
             }
         }
@@ -39,10 +39,10 @@ ui_trait_governor_physicist = {
         NOT = {
             from = {
                 OR = {
-                    has_ethic = "leader_trait_intellectual"
-                    has_ethic = "auth_machine_intelligence"
-                    has_ethic = "ui_trait_governor_engineer"
-                    has_ethic = "ui_trait_governor_sociologist"
+                    has_trait = "leader_trait_intellectual"
+                    has_authority = "auth_machine_intelligence"
+                    has_trait = "ui_trait_governor_engineer"
+                    has_trait = "ui_trait_governor_sociologist"
                 }
             }
         }
@@ -67,10 +67,10 @@ ui_trait_governor_sociologist = {
         NOT = {
             from = {
                 OR = {
-                    has_ethic = "leader_trait_intellectual"
-                    has_ethic = "auth_machine_intelligence"
-                    has_ethic = "ui_trait_governor_engineer"
-                    has_ethic = "ui_trait_governor_physicist"
+                    has_trait = "leader_trait_intellectual"
+                    has_authority = "auth_machine_intelligence"
+                    has_trait = "ui_trait_governor_engineer"
+                    has_trait = "ui_trait_governor_physicist"
                 }
             }
         }
@@ -91,7 +91,7 @@ ui_trait_governor_familist = {
     }
 
     leader_potential_add = {
-        NOT = { from = { has_ethic = "ethic_hive_mind" } }
+        NOT = { from = { has_authority = "auth_hive_mind" } }
     }
 
     leader_trait = { governor }
@@ -188,7 +188,7 @@ ui_trait_governor_moral_authority = {
                 FROM = { has_ethic = "ethic_fanatic_authoritarian" }
                 FROM = { has_ethic = "ethic_fanatic_xenophobe" }
                 FROM = { has_ethic = "ethic_xenophobe" }
-                FROM = { has_ethic = "ethic_hive_mind" }
+                FROM = { has_authority = "auth_hive_mind" }
             }
         }
     }
@@ -209,7 +209,7 @@ ui_trait_governor_ideologue_militarist = {
         NOT = {
             OR = {
                 FROM = { has_ethic = "ethic_fanatic_pacifist" }
-                FROM = { has_ethic = "ethic_hive_mind" }
+                FROM = { has_authority = "auth_hive_mind" }
             }
         }
     }
@@ -233,7 +233,7 @@ ui_trait_governor_ideologue_pacifist = {
         NOT = {
             OR = {
                 FROM = { has_ethic = "ethic_fanatic_militarist" }
-                FROM = { has_ethic = "ethic_hive_mind" }
+                FROM = { has_authority = "auth_hive_mind" }
             }
         }
     }
@@ -257,7 +257,7 @@ ui_trait_governor_ideologue_xenophobe = {
         NOT = {
             OR = {
                 FROM = { has_ethic = "ethic_fanatic_xenophile" }
-                FROM = { has_ethic = "ethic_hive_mind" }
+                FROM = { has_authority = "auth_hive_mind" }
             }
         }
     }
@@ -281,7 +281,7 @@ ui_trait_governor_ideologue_xenophile = {
         NOT = {
             OR = {
                 FROM = { has_ethic = "ethic_fanatic_xenophobe" }
-                FROM = { has_ethic = "ethic_hive_mind" }
+                FROM = { has_authority = "auth_hive_mind" }
             }
         }
     }
@@ -305,7 +305,7 @@ ui_trait_governor_ideologue_egalitarian = {
         NOT = {
             OR = {
                 FROM = { has_ethic = "ethic_fanatic_authoritarian" }
-                FROM = { has_ethic = "ethic_hive_mind" }
+                FROM = { has_authority = "auth_hive_mind" }
             }
         }
     }
@@ -329,7 +329,7 @@ ui_trait_governor_ideologue_authoritarian = {
         NOT = {
             OR = {
                 FROM = { has_ethic = "ethic_fanatic_egalitarian" }
-                FROM = { has_ethic = "ethic_hive_mind" }
+                FROM = { has_authority = "auth_hive_mind" }
             }
         }
     }
@@ -353,7 +353,7 @@ ui_trait_governor_ideologue_materialist = {
         NOT = {
             OR = {
                 FROM = { has_ethic = "ethic_fanatic_spiritualist" }
-                FROM = { has_ethic = "ethic_hive_mind" }
+                FROM = { has_authority = "auth_hive_mind" }
             }
         }
     }
@@ -377,7 +377,7 @@ ui_trait_governor_ideologue_spiritualist = {
         NOT = {
             OR = {
                 FROM = { has_ethic = "ethic_fanatic_materialist" }
-                FROM = { has_ethic = "ethic_hive_mind" }
+                FROM = { has_authority = "auth_hive_mind" }
             }
         }
     }
@@ -498,7 +498,7 @@ ui_trait_governor_questionable_ethics = {
         NOT = {
             OR = {
                 FROM = { has_authority = "auth_machine_intelligence" }
-                FROM = { has_ethic = "ethic_hive_mind" }
+                FROM = { has_authority = "auth_hive_mind" }
             }
         }
     }
@@ -612,9 +612,8 @@ ui_trait_governor_chemist  = {
     modification = no
 
     modifier = {
-        planet_building_chemical_plant_build_speed_mult = 0.33
-        planet_buildings_volatile_motes_cost_mult = -0.10
-        planet_chemists_produces_mult = 0.10
+        planet_building_chemical_plant_build_speed_mult = 0.40
+        planet_chemists_produces_mult = 0.15
     }
 
     leader_trait = { governor }
@@ -626,9 +625,8 @@ ui_trait_governor_metallurgist  = {
     modification = no
 
     modifier = {
-        planet_building_foundry_1_build_speed_mult = 0.33
-        planet_buildings_alloys_cost_mult = -0.10
-        planet_metallurgists_produces_mult = 0.10
+        planet_building_foundry_1_build_speed_mult = 0.40
+        planet_metallurgists_produces_mult = 0.15
     }
 
     leader_trait = { governor }

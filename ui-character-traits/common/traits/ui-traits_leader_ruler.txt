@@ -3,7 +3,7 @@ ui_trait_ruler_backroom_backstabber = {
     modification = no
 
     leader_potential_add = {
-        NOT = { from = { has_ethic = "ethic_hive_mind" } }
+        NOT = { from = { has_authority = "auth_hive_mind" } }
     }
 
     modifier = {
@@ -20,7 +20,7 @@ ui_trait_ruler_smoothtalking_charmer = {
     modification = no
 
     leader_potential_add = {
-        NOT = { from = { has_ethic = "ethic_hive_mind" } }
+        NOT = { from = { has_authority = "auth_hive_mind" } }
     }
 
     modifier = {
