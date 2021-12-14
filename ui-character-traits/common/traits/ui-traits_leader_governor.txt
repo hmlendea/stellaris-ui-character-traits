@@ -193,7 +193,7 @@ ui_trait_governor_moral_authority = {
         }
     }
 
-    opposites = { "ui_trait_governor_ideologue_authoritarian" "ui_trait_vicious_rumours" "ui_trait_governor_deal_with_the_devil" }
+    opposites = { "ui_trait_governor_ideologue_authoritarian" "ui_trait_governor_vicious_rumours" "ui_trait_governor_deal_with_the_devil" }
 }
 
 ui_trait_governor_ideologue_militarist = {
