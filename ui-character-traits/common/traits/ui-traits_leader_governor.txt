@@ -497,12 +497,12 @@ ui_trait_governor_questionable_ethics = {
     leader_potential_add = {
         NOT = {
             OR = {
-                FROM = { has_authority = "auth_machine_intelligence" } }
+                FROM = { has_authority = "auth_machine_intelligence" }
                 FROM = { has_ethic = "ethic_hive_mind" }
             }
         }
     }
-    
+
     leader_trait = { governor }
     leader_class = { governor }
 
