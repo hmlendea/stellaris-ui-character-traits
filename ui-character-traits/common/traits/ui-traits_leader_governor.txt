@@ -502,7 +502,7 @@ ui_trait_governor_questionable_ethics = {
             }
         }
     }
-
+    
     leader_trait = { governor }
     leader_class = { governor }
 
@@ -586,9 +586,8 @@ ui_trait_governor_fortifier = {
     modification = no
 
     modifier = {
-        planet_buildings_strongholds_build_speed_mult = 0.33
-        planet_buildings_strongholds_cost_mult = -0.33
-        army_defense_damage_mult = 0.20
+        planet_building_stronghold_build_speed_mult = 0.40
+        army_defense_damage_mult = 0.25
     }
 
     leader_trait = { governor }
@@ -600,9 +599,8 @@ ui_trait_governor_settler = {
     modification = no
 
     modifier = {
-        planet_district_city_build_speed_mult = 0.33
-        planet_district_city_cost_mult = -0.33
-        planet_colony_development_speed_mult = 0.20
+        planet_district_city_build_speed_mult = 0.40
+        planet_colony_development_speed_mult = 0.25
     }
 
     leader_trait = { governor }
@@ -615,7 +613,7 @@ ui_trait_governor_chemist  = {
 
     modifier = {
         planet_building_chemical_plant_build_speed_mult = 0.33
-        planet_building_chemical_plant_cost_mult = -0.33
+        planet_buildings_volatile_motes_cost_mult = -0.10
         planet_chemists_produces_mult = 0.10
     }
 
@@ -629,7 +627,7 @@ ui_trait_governor_metallurgist  = {
 
     modifier = {
         planet_building_foundry_1_build_speed_mult = 0.33
-        planet_building_foundry_1_cost_mult = -0.33
+        planet_buildings_alloys_cost_mult = -0.10
         planet_metallurgists_produces_mult = 0.10
     }
 
@@ -642,8 +640,7 @@ ui_trait_governor_green_energy_advocate = {
     modification = no
 
     modifier = {
-        planet_district_generator_cost_mult = 0.10
-        planet_district_generator_build_speed_mult = -0.10
+        planet_district_generator_build_speed_mult = -0.33
         planet_pops_consumer_goods_upkeep_mult = -0.10
     }
     
