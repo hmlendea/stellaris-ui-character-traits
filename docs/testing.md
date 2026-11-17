@@ -47,7 +47,7 @@ flowchart TD
 | 8 | Eligibility rejects correctly | The same trait is absent when the condition is not met |
 | 9 | Exclusions operate | Mutually exclusive traits are not offered together |
 | 10 | Modifiers apply | Observed game values change as declared |
-| 11 | Modification policy holds | Traits with `modification = no` cannot be added or removed through modification |
+| 11 | Modifier scoping holds | Every trait declares exactly one scoped modifier block and no unscoped `modifier` block |
 | 12 | Generation policy holds | `ui_trait_leader_politically_connected` can be assigned at leader generation |
 | 13 | Error log is clean for this mod | No trait, localisation, or icon errors attributable to this mod |
 | 14 | Existing saves still load | A save with mod traits loads and resolves them |

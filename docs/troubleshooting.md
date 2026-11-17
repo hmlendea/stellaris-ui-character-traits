@@ -19,18 +19,17 @@ flowchart TD
 | Symptom | Probable cause | Resolution |
 |---------|----------------|------------|
 | Mod absent from the launcher playset | Descriptor unreadable, or `path` does not resolve to the payload directory | Confirm `ui-character-traits.mod` exists at the mod-directory root and the payload directory is named `ui-character-traits`. Compare the two descriptor files. |
-| Mod listed but marked incompatible | `supported_version="3.2.*"` does not match the installed game version | Install a 3.2.x build, or update `supported_version` in both descriptors to an evidenced-compatible range |
+| Mod listed but marked incompatible | `supported_version="v4.5.*"` does not match the installed game version | Install a 4.5.x build, or update `supported_version` in both descriptors to an evidenced-compatible range |
 | A trait shows a raw `ui_trait_*` string as its name | The localisation name key is missing or misspelled | Compare the identifier against the localisation file; keys must match exactly |
-| A trait shows a name but no description | The `_desc` key is missing or misspelled | Check for a misspelling; two such defects exist today (`idsustrialist`) |
+| A trait shows a name but no description | The `_desc` key is missing or misspelled | Check that the `_desc` key matches the identifier exactly; no such defect exists today |
 | All localisation strings missing at once | The localisation file lost its UTF-8 BOM or failed to parse | Confirm UTF-8 with BOM; confirm the `l_english:` root block and the `key:0 "value"` entry form |
-| A trait shows a generic or placeholder icon | The `icon` path does not resolve | Confirm the DDS file exists at the referenced path, or that the vanilla icon exists in the installed game version |
+| A trait shows a generic or placeholder icon | The `ICON` sprite does not resolve | Confirm the sprite is declared in `interface/ui_character_traits.gfx` and the DDS file it names exists, or that the vanilla sprite exists in the installed game version |
 | A trait never appears for any leader | `leader_class` excludes the class, or `leader_potential_add` never matches | Inspect the trait's `leader_class`, `leader_trait`, and eligibility block |
 | A trait appears for the wrong leader class | `leader_class` and `leader_trait` disagree | Make the two fields consistent; note that file placement is not authoritative |
 | A trait disappears only for some empires | An eligibility condition matches | Inspect the `leader_potential_add` block, particularly hive-mind, machine-intelligence, and fanatic-ethic exclusions |
 | Two conflicting traits are both offered | The exclusion entry is missing, one-directional, or references a nonexistent identifier | Inspect both traits' `opposites` lists; verify the target exists |
 | An exclusion that used to work stopped working after a game update | A referenced vanilla identifier was renamed or removed | Re-verify the vanilla references listed in [Dependencies](./dependencies.md) |
 | Modifier effects are not observable in game | The trait is not actually held, or the modifier key is not recognised | Confirm the trait is held; confirm the key appears elsewhere in the corpus |
-| A trait cannot be added or removed through modification | The trait declares `modification = no` | Intentional for all governor and ruler traits |
 | One trait edit broke many traits | A syntax error in the governor file, which holds 34 of 47 definitions | Inspect the edited block for unbalanced braces; check the engine error log |
 | An existing save fails to resolve a trait | The trait identifier was renamed or the definition removed | Restore the identifier or re-add the definition; see [State and persistence](./state-and-persistence.md) |
 
@@ -53,8 +52,10 @@ flowchart TD
 
 ## Procedure: icon problem
 
-1. Extract every `icon` value from `common/traits/*.txt`.
-2. For each value referencing `gfx/interface/icons/traits/<name>.dds`, confirm the file exists.
+1. Extract every `ICON` value from the `trait/icon` blocks in `common/traits/*.txt`.
+2. For each `GFX_` value, confirm a `spriteType` with that name exists either in
+   `interface/ui_character_traits.gfx` or in a vanilla `interface/*.gfx` file.
+3. For each mod sprite, confirm the `texturefile` it names exists on disk.
 3. For any value that is not shipped by the mod, confirm the base game supplies that asset for the installed version.
 4. Confirm the asset is DDS and sits directly in `traits/`, not in a subdirectory.
 
@@ -79,10 +80,8 @@ flowchart TD
 
 | Defect | Symptom it produces |
 |--------|---------------------|
-| `ui_trait_governor_consumer_idsustrialist_desc` misspelled | `ui_trait_governor_consumer_industrialist` shows no description |
-| `ui_trait_governor_war_idsustrialist_desc` misspelled | `ui_trait_governor_war_industrialist` shows no description |
 | `ui_trait_governor_securist` localisation orphaned | Nothing visible; the pair is inert |
-| 37 unreferenced icon files | Nothing visible; the assets are inert |
+| 1 unreferenced icon file (`ui_trait_governor_securist.dds`) | Nothing visible; the asset is inert |
 | Unquoted `opposites` member at line 410 | Unverified; may cause the exclusion to be malformed |
 | Seven one-directional exclusion edges | Possibly allows traits to coexist that were intended to be exclusive |
 

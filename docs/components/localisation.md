@@ -49,7 +49,7 @@ l_english:
 | `§!` | Closes a vanilla Stellaris colour/style block opened elsewhere by the engine | 46 of 48 descriptions |
 | `\n` | Line break | 48 of 48 descriptions |
 
-`ui_trait_general_crusader_desc` and `ui_trait_ruler_hardcore_bureaucrat_desc` are the two descriptions that do not contain `§!`. The trailing `\n` on every description is a stylistic convention for spacing the tooltip body.
+`ui_trait_general_faith_militant_desc` and `ui_trait_ruler_hardcore_bureaucrat_desc` are the two descriptions that do not contain `§!`. The trailing `\n` on every description is a stylistic convention for spacing the tooltip body.
 
 ## Key coverage
 
@@ -59,19 +59,17 @@ l_english:
 | Name keys present | 48 |
 | Description keys present | 48 |
 | Definitions with a matching name key | 47 of 47 |
-| Definitions with a matching description key | 45 of 47 |
+| Definitions with a matching description key | 47 of 47 |
 | Keys with no matching definition | 1 name key (`ui_trait_governor_securist`) |
-| Description keys with no matching definition | 2 (caused by misspelling) |
+| Description keys with no matching definition | 1 (`ui_trait_governor_securist_desc`) |
 
-### The three pairing defects
+### The one remaining pairing leftover
 
 | Key | Problem |
 |-----|---------|
 | `ui_trait_governor_securist`, `ui_trait_governor_securist_desc` | Orphaned. No trait definition uses this identifier. Corresponding `ui_trait_governor_securist.dds` exists in the icon directory. |
-| `ui_trait_governor_consumer_idsustrialist_desc` | Misspelled. The trait identifier is `ui_trait_governor_consumer_industrialist`, so the description key never binds and the trait shows no description. |
-| `ui_trait_governor_war_idsustrialist_desc` | Misspelled in the same way. The trait identifier is `ui_trait_governor_war_industrialist`. |
 
-Note that the **name keys** for both industrialist traits are spelled correctly (`ui_trait_governor_consumer_industrialist`, `ui_trait_governor_war_industrialist`); only the `_desc` keys are malformed. As a result both traits display a name but no description.
+The two description keys that were previously misspelled as `ui_trait_governor_consumer_idsustrialist_desc` and `ui_trait_governor_war_idsustrialist_desc` are now spelled correctly and bind to their traits. Every defined trait therefore displays both a name and a description.
 
 ## Display names
 
@@ -84,7 +82,7 @@ Note that the **name keys** for both industrialist traits are spelled correctly 
 | `ui_trait_admiral_sniper` | Sniper |
 | `ui_trait_admiral_stormer` | Stormer |
 | `ui_trait_admiral_testudo` | Testudo |
-| `ui_trait_general_crusader` | Crusader |
+| `ui_trait_general_faith_militant` | Militant Faith |
 | `ui_trait_governor_chemist` | Chemist |
 | `ui_trait_governor_consumer_industrialist` | Consumer Industrialist |
 | `ui_trait_governor_corporatist` | Corporatist |
@@ -128,7 +126,16 @@ Note that the **name keys** for both industrialist traits are spelled correctly 
 
 ## Text-quality defects in description values
 
-The description strings contain several typographical errors unrelated to key binding. These affect only displayed text, not behaviour: `"sheild wall"` in `ui_trait_admiral_testudo_desc`, `"idustry"` and `"idsustrialist"` in the industrialist descriptions, `"enginner"` in `ui_trait_governor_engineer_desc`, `"pyhsics"` in `ui_trait_governor_physicist_desc`, `"authocracy"` in `ui_trait_governor_ideologue_authoritarian_desc`, and `"stauch"` in several descriptions. See [Open questions](./../ambiguities-and-open-questions.md).
+The description strings have been proofread as part of the 4.5 update. Previously present
+typographical errors (`sheild`, `idustry`, `idsustrialist`, `enginner`, `pyhsics`,
+`authocracy`, `stauch`, `citisens`, `villifying`, `ocasion`, `rigit`, `withing`) have been
+corrected, along with duplicated words (`actively actively`, `the the`) and a stray possessive
+in the general trait's description.
+
+One structural defect was also fixed: `ui_trait_admiral_testudo_desc` previously contained
+unescaped nested double quotes (`the "sheild wall" tactic`), which terminated the quoted value
+early and broke that localisation entry. The phrase is now emphasised with the engine's own
+`§H…§!` style markers instead.
 
 ## Language coverage
 

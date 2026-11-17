@@ -24,7 +24,7 @@ The mod has no configuration file, no environment variables, no command-line opt
 | `name` | `Universum Infinitum - Character Traits` | Display name in the launcher and store listings |
 | `path` | `mod/ui-character-traits` | Must match the payload directory name, or the mod fails to load |
 | `tags` | `{ "Characters" }` | Launcher categorisation |
-| `supported_version` | `3.2.*` | Compatibility gate; a mismatch marks the mod incompatible |
+| `supported_version` | `v4.5.*` | Compatibility gate; a mismatch marks the mod incompatible |
 | `cost` | `1` in all 47 traits | All mod traits share the same selection cost |
 
 ## Absent configuration mechanisms

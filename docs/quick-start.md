@@ -7,7 +7,7 @@
    - [Paradox Mods](https://mods.paradoxplaza.com/mods/34606/Any)
    - [Nexus Mods](https://nexusmods.com/stellaris/mods/90)
    - [GitHub Releases](https://github.com/hmlendea/stellaris-ui-character-traits/releases)
-2. Enable the mod in the Stellaris launcher's playset. The launcher validates `supported_version="3.2.*"`.
+2. Enable the mod in the Stellaris launcher's playset. The launcher validates `supported_version="v4.5.*"`.
 3. Start a game or load a save. Leader traits from the mod appear in the leader trait interface when their eligibility conditions are met.
 
 ### Manual installation
@@ -22,7 +22,7 @@ There is nothing to build, install, or compile. The workflow is edit, deploy loc
 
 ### Prerequisites
 
-- A Stellaris installation matching the declared `supported_version` (`3.2.*`) for in-game verification.
+- A Stellaris installation matching the declared `supported_version` (`v4.5.*`) for in-game verification.
 - A text editor with Clausewitz script and YAML syntax support.
 - The ability to inspect or convert DDS images if you intend to create icons.
 

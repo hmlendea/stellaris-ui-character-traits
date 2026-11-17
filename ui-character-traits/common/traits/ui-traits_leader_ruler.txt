@@ -1,72 +1,176 @@
-ui_trait_ruler_backroom_backstabber = {
-    cost = 1
-    modification = no
+# Universum Infinitum - Character Traits
+# Ruler traits - Stellaris 4.5 (Cygnus) leader system
+#
+# The legacy "ruler" leader class no longer exists in 4.x. Rulers are councilors, so
+# these traits are now modelled the way vanilla handles ruler traits: a councilor
+# modifier that takes effect while the leader sits on the council (including as the
+# empire ruler). Without Galactic Paragons they are open to any leader; with it they
+# are reserved for the ruler and for leaders holding a councilor subclass.
 
-    leader_potential_add = {
-        NOT = { from = { has_authority = "auth_hive_mind" } }
+ui_trait_ruler_backroom_backstabber = {
+    inline_script = {
+        script = trait/icon
+        CLASS = leader
+        ICON = "GFX_ui_trait_ruler_backroom_backstabber"
+        RARITY = common
+        COUNCIL = yes
+        TIER = 1
     }
 
-    modifier = {
+    leader_potential_add = {
+        trait_is_crisis_faction_check = no
+        NOT = {
+            from = { has_authority = "auth_hive_mind" }
+        }
+        OR = {
+            is_ruler = yes
+            has_council_subclass = yes
+            has_paragon_dlc = no
+        }
+    }
+
+    councilor_modifier = {
         country_influence_produces_mult = 0.25
         pop_government_ethic_attraction = 0.05
     }
 
-    leader_trait = { ruler }
-    leader_class = { ruler }
+    leader_class = { commander scientist official }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/council_weight_mult
+    }
 }
 
 ui_trait_ruler_smoothtalking_charmer = {
-    cost = 1
-    modification = no
-
-    leader_potential_add = {
-        NOT = { from = { has_authority = "auth_hive_mind" } }
+    inline_script = {
+        script = trait/icon
+        CLASS = leader
+        ICON = "GFX_ui_trait_ruler_smoothtalking_charmer"
+        RARITY = common
+        COUNCIL = yes
+        TIER = 1
     }
 
-    modifier = {
+    leader_potential_add = {
+        trait_is_crisis_faction_check = no
+        NOT = {
+            from = { has_authority = "auth_hive_mind" }
+        }
+        OR = {
+            is_ruler = yes
+            has_council_subclass = yes
+            has_paragon_dlc = no
+        }
+    }
+
+    councilor_modifier = {
         country_trust_growth = 0.1
     }
 
-    leader_trait = { ruler }
-    leader_class = { ruler }
+    leader_class = { commander scientist official }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/council_weight_mult
+    }
 }
 
 ui_trait_ruler_antique_collector = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = leader
+        ICON = "GFX_ui_trait_ruler_antique_collector"
+        RARITY = common
+        COUNCIL = yes
+        TIER = 1
+    }
 
-    modifier = {
+    leader_potential_add = {
+        trait_is_crisis_faction_check = no
+        OR = {
+            is_ruler = yes
+            has_council_subclass = yes
+            has_paragon_dlc = no
+        }
+    }
+
+    councilor_modifier = {
         science_ship_survey_speed = 0.25
         ship_anomaly_generation_chance_mult = 0.25
         ship_sensor_range_add = 1
     }
 
-    leader_trait = { ruler }
-    leader_class = { ruler }
-}
-ui_trait_ruler_efficient_bureaucrat = {
-    cost = 1
-    modification = no
+    leader_class = { commander scientist official }
 
-    modifier = {
-        country_admin_cap_add = 10
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/council_weight_mult
+    }
+}
+
+ui_trait_ruler_efficient_bureaucrat = {
+    inline_script = {
+        script = trait/icon
+        CLASS = leader
+        ICON = "GFX_ui_trait_ruler_efficient_bureaucrat"
+        RARITY = common
+        COUNCIL = yes
+        TIER = 1
     }
 
-    leader_trait = { ruler }
-    leader_class = { ruler }
+    leader_potential_add = {
+        trait_is_crisis_faction_check = no
+        OR = {
+            is_ruler = yes
+            has_council_subclass = yes
+            has_paragon_dlc = no
+        }
+    }
+
+    councilor_modifier = {
+        empire_size_add = -10
+    }
+
+    leader_class = { commander scientist official }
 
     opposites = { "ui_trait_ruler_hardcore_bureaucrat" }
-}
-ui_trait_ruler_hardcore_bureaucrat = {
-    cost = 1
-    modification = no
 
-    modifier = {
-        country_admin_cap_add = -10
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/council_weight_mult
+    }
+}
+
+ui_trait_ruler_hardcore_bureaucrat = {
+    inline_script = {
+        script = trait/icon
+        CLASS = leader
+        ICON = "GFX_ui_trait_ruler_hardcore_bureaucrat"
+        RARITY = common
+        COUNCIL = yes
+        TIER = 1
     }
 
-    leader_trait = { ruler }
-    leader_class = { ruler }
-    
+    leader_potential_add = {
+        trait_is_crisis_faction_check = no
+        OR = {
+            is_ruler = yes
+            has_council_subclass = yes
+            has_paragon_dlc = no
+        }
+    }
+
+    councilor_modifier = {
+        empire_size_add = 10
+    }
+
+    leader_class = { commander scientist official }
+
     opposites = { "ui_trait_ruler_efficient_bureaucrat" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/council_weight_mult
+    }
 }

@@ -34,11 +34,11 @@ Mod that adds various new character traits to Stellaris.
 
 ## ✨ Capabilities
 
-- Adds 47 leader traits to Stellaris across the admiral, general, governor, and ruler leader classes.
+- Adds 47 leader traits to Stellaris, mapped onto the post-4.x leader model: fleet commanders, army commanders, governors, and councilors.
 - Offers opposed traits as deliberate trade-offs, so a leader gains one benefit at the cost of another.
-- Gates traits by empire ethics, empire authority, and the leader's existing traits.
+- Gates traits by empire ethics, empire authority, leader subclass, and the leader's existing traits.
 - Withholds traits from hive-mind and machine-intelligence empires where their themes conflict with those empires.
-- Reuses vanilla icon art where a trait mirrors a vanilla counterpart.
+- Reuses vanilla leader-trait and specialist-focus icon art where a trait mirrors a vanilla counterpart, and ships new art for its own traits.
 - Requires no new game: mod traits become available in existing saves.
 - Remains compatible with other Stellaris mods, because it adds content under its own identifier namespace rather than replacing vanilla content.
 
@@ -52,22 +52,20 @@ Mod that adds various new character traits to Stellaris.
 
 Install the mod from a distribution channel below and enable it in the Stellaris launcher's playset. No further configuration exists.
 
-Once enabled, the mod's traits join the candidate pool for the leader classes they are scoped to. They appear in the leader trait interface when the empire's ethics and authorities, and the leader's existing traits, satisfy the trait's conditions. For example, a governor can be offered `Environmentalist` when the empire is eligible for it, and cannot be offered both `Gun Legaliser` and `Gun Prohibitor` at the same time.
+Once enabled, the mod's traits join the candidate pool for the leader classes and subclasses they are scoped to. They appear in the leader trait interface when the empire's ethics and authorities, the leader's class and subclass, and the leader's existing traits satisfy the trait's conditions. For example, a governor can be offered `Environmentalist` when the empire is eligible for it, and cannot be offered both `Gun Legaliser` and `Gun Prohibitor` at the same time.
 
 ## ⚠️ Known Limitations
 
-- The declared supported game version is `3.2.*`; behaviour on any other game version is unverified.
+- The declared supported game version is `v4.5.*`; behaviour on any other game version is unverified.
 - Only English localisation is supplied.
-- Only 11 of the 47 traits declare an icon; the remainder use the game's default trait icon.
-- Two traits currently display no description because of misspelled localisation keys.
-- 37 shipped icon assets are not referenced by any trait definition.
+- Every trait declares an icon; 44 render shipped art through sprites the mod defines, and 3 that mirror a vanilla concept reuse the vanilla specialist-focus sprites.
 - Traits cannot be added, removed, or revised during gameplay; changes require a restart.
 
 ## 🖥️ System Requirements
 
 | Component | Minimum | Recommended |
 |-----------|---------|-------------|
-| Stellaris | `3.2.*` | Latest 3.2.x release |
+| Stellaris | `v4.5.*` | Latest 4.5.x release |
 | Operating system | N/A | Linux, macOS, or Windows |
 
 ## 📦 Installation
@@ -95,7 +93,7 @@ The mod supplies English names and descriptions for every trait it adds. Trait n
 
 | Component | Supported Versions | Notes |
 |-----------|--------------------|-------|
-| Stellaris | `3.2.*` | Other game versions are unverified. |
+| Stellaris | `v4.5.*` | Other game versions are unverified. |
 | Operating system | Any supported by the game | The mod contains no executable code and no platform-specific paths. It is actively tested on Linux, including through Steam Play. |
 | Other mods | Any | The mod adds content under its own `ui_trait_` identifier namespace and replaces no vanilla file. |
 
@@ -116,6 +114,7 @@ The repository is a single Stellaris mod: one descriptor at the repository root,
 | Directory | Purpose |
 |-----------|---------|
 | `ui-character-traits/common/traits/` | Clausewitz leader trait definitions |
+| `ui-character-traits/interface/` | Sprite definitions that expose the mod's trait icons to the engine |
 | `ui-character-traits/localisation/english/` | English trait names and descriptions |
 | `ui-character-traits/gfx/interface/icons/traits/` | DDS trait icon assets |
 | `docs/` | Repository knowledge base |

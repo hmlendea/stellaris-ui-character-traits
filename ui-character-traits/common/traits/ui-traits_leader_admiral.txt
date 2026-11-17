@@ -1,77 +1,230 @@
+# Universum Infinitum - Character Traits
+# Admiral traits - Stellaris 4.5 (Cygnus) leader system
+#
+# The legacy "admiral" leader class no longer exists in 4.x; fleet commanders are
+# now "commander" leaders with the "commander_admiral" subclass. These traits are
+# therefore scoped to the commander class and, when the Galactic Paragons DLC is
+# active, further restricted to the admiral subclass so they stay fleet-only.
+
 ui_trait_admiral_berserker = {
-    cost = 1
-    icon = "gfx/interface/icons/traits/ui_trait_berserker.dds"
-    modifier = {
+    # Basic trait: remains attainable without Galactic Paragons, matching pre-4.x behaviour.
+    inline_script = {
+        script = trait/icon
+        CLASS = commander
+        ICON = "GFX_ui_trait_berserker"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
+    leader_potential_add = {
+        trait_is_crisis_faction_check = no
+        OR = {
+            has_paragon_dlc = no
+            has_trait = subclass_commander_admiral
+        }
+    }
+    fleet_modifier = {
         ship_weapon_damage = 0.15
         ship_disengage_chance_mult = -0.25
     }
-    leader_trait = { admiral }
-    leader_class = { admiral }
-    opposites = { "leader_trait_nervous" "leader_trait_cautious" "leader_trait_scout" "ui_trait_admiral_guerillero" }
+    leader_class = { commander }
+    opposites = {
+        "leader_trait_nervous"
+        "leader_trait_cautious"
+        "leader_trait_scout"
+        "ui_trait_admiral_guerillero"
+    }
+    selectable_weight = {
+        weight = @class_trait_weight
+        inline_script = paragon/pilot_weight_mult
+        inline_script = {
+            script = paragon/subclass_weight_mult
+            SUBCLASS = commander_admiral
+        }
+    }
 }
 
 ui_trait_admiral_guerillero = {
-    cost = 1
-    icon = "gfx/interface/icons/traits/ui_trait_guerillero.dds"
-    modifier = {
+    # Basic trait: remains attainable without Galactic Paragons, matching pre-4.x behaviour.
+    inline_script = {
+        script = trait/icon
+        CLASS = commander
+        ICON = "GFX_ui_trait_guerillero"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
+    leader_potential_add = {
+        trait_is_crisis_faction_check = no
+        OR = {
+            has_paragon_dlc = no
+            has_trait = subclass_commander_admiral
+        }
+    }
+    fleet_modifier = {
         ship_speed_mult = 0.10
         ship_fire_rate_mult = 0.10
         ship_weapon_range_mult = -0.10
         ship_disengage_chance_mult = 0.25
     }
-    leader_trait = { admiral }
-    leader_class = { admiral }
-    opposites = { "leader_trait_nervous" "leader_trait_cautious" "leader_trait_scout" "ui_trait_admiral_berserker" }
+    leader_class = { commander }
+    opposites = {
+        "leader_trait_nervous"
+        "leader_trait_cautious"
+        "leader_trait_scout"
+        "ui_trait_admiral_berserker"
+    }
+    selectable_weight = {
+        weight = @class_trait_weight
+        inline_script = paragon/pilot_weight_mult
+        inline_script = {
+            script = paragon/subclass_weight_mult
+            SUBCLASS = commander_admiral
+        }
+    }
 }
 
 ui_trait_admiral_glass_cannon = {
-    cost = 1
-    icon = "gfx/interface/icons/traits/ui_trait_glass_cannon.dds"
-    modifier = {
+    # Basic trait: remains attainable without Galactic Paragons, matching pre-4.x behaviour.
+    inline_script = {
+        script = trait/icon
+        CLASS = commander
+        ICON = "GFX_ui_trait_glass_cannon"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
+    leader_potential_add = {
+        trait_is_crisis_faction_check = no
+        OR = {
+            has_paragon_dlc = no
+            has_trait = subclass_commander_admiral
+        }
+    }
+    fleet_modifier = {
         ship_weapon_damage = 0.20
         ship_hull_mult = -0.20
     }
-    leader_trait = { admiral }
-    leader_class = { admiral }
-    opposites = { "leader_trait_cautious" "ui_trait_admiral_testudo" }
+    leader_class = { commander }
+    opposites = {
+        "leader_trait_cautious"
+        "ui_trait_admiral_testudo"
+    }
+    selectable_weight = {
+        weight = @class_trait_weight
+        inline_script = paragon/pilot_weight_mult
+        inline_script = {
+            script = paragon/subclass_weight_mult
+            SUBCLASS = commander_admiral
+        }
+    }
 }
 
 ui_trait_admiral_sniper = {
-    cost = 1
-    icon = "gfx/interface/icons/traits/ui_trait_sniper.dds"
-    modifier = {
+    # Basic trait: remains attainable without Galactic Paragons, matching pre-4.x behaviour.
+    inline_script = {
+        script = trait/icon
+        CLASS = commander
+        ICON = "GFX_ui_trait_sniper"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
+    leader_potential_add = {
+        trait_is_crisis_faction_check = no
+        OR = {
+            has_paragon_dlc = no
+            has_trait = subclass_commander_admiral
+        }
+    }
+    fleet_modifier = {
         ship_weapon_damage = 0.10
         ship_weapon_range_mult = 0.10
         ship_fire_rate_mult = -0.10
         ship_speed_mult = -0.10
     }
-    leader_trait = { admiral }
-    leader_class = { admiral }
-    opposites = { "ui_trait_admiral_stormer" }
+    leader_class = { commander }
+    opposites = {
+        "ui_trait_admiral_stormer"
+    }
+    selectable_weight = {
+        weight = @class_trait_weight
+        inline_script = paragon/pilot_weight_mult
+        inline_script = {
+            script = paragon/subclass_weight_mult
+            SUBCLASS = commander_admiral
+        }
+    }
 }
 
 ui_trait_admiral_stormer = {
-    cost = 1
-    icon = "gfx/interface/icons/traits/ui_trait_stormer.dds"
-    modifier = {
+    # Basic trait: remains attainable without Galactic Paragons, matching pre-4.x behaviour.
+    inline_script = {
+        script = trait/icon
+        CLASS = commander
+        ICON = "GFX_ui_trait_stormer"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
+    leader_potential_add = {
+        trait_is_crisis_faction_check = no
+        OR = {
+            has_paragon_dlc = no
+            has_trait = subclass_commander_admiral
+        }
+    }
+    fleet_modifier = {
         ship_weapon_damage = -0.10
         ship_weapon_range_mult = -0.10
         ship_fire_rate_mult = 0.10
         ship_speed_mult = 0.10
     }
-    leader_trait = { admiral }
-    leader_class = { admiral }
-    opposites = { "ui_trait_admiral_sniper" }
+    leader_class = { commander }
+    opposites = {
+        "ui_trait_admiral_sniper"
+    }
+    selectable_weight = {
+        weight = @class_trait_weight
+        inline_script = paragon/pilot_weight_mult
+        inline_script = {
+            script = paragon/subclass_weight_mult
+            SUBCLASS = commander_admiral
+        }
+    }
 }
 
 ui_trait_admiral_testudo = {
-    cost = 1
-    icon = "gfx/interface/icons/traits/ui_trait_testudo.dds"
-    modifier = {
+    # Basic trait: remains attainable without Galactic Paragons, matching pre-4.x behaviour.
+    inline_script = {
+        script = trait/icon
+        CLASS = commander
+        ICON = "GFX_ui_trait_testudo"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
+    leader_potential_add = {
+        trait_is_crisis_faction_check = no
+        OR = {
+            has_paragon_dlc = no
+            has_trait = subclass_commander_admiral
+        }
+    }
+    fleet_modifier = {
         ship_weapon_damage = -0.20
         ship_hull_mult = 0.20
     }
-    leader_trait = { admiral }
-    leader_class = { admiral }
-    opposites = { "ui_trait_admiral_glass_cannon" }
+    leader_class = { commander }
+    opposites = {
+        "ui_trait_admiral_glass_cannon"
+    }
+    selectable_weight = {
+        weight = @class_trait_weight
+        inline_script = paragon/pilot_weight_mult
+        inline_script = {
+            script = paragon/subclass_weight_mult
+            SUBCLASS = commander_admiral
+        }
+    }
 }

@@ -8,52 +8,104 @@ The full procedure, in order.
 
 1. **Choose the identifier.** Format: `ui_trait_<class>_<theme>` for a class-scoped trait, or `ui_trait_leader_<theme>` for a class-agnostic trait. Verify it does not already exist anywhere in `common/traits/`.
 
-2. **Add the trait block** to the file whose class suffix matches the trait's class:
-   - Admiral → `ui-traits_leader_admiral.txt`
-   - General → `ui-traits_leader_general.txt`
+2. **Add the trait block** to the file whose legacy class suffix matches the trait's
+   intended role:
+   - Fleet commander → `ui-traits_leader_admiral.txt`
+   - Army commander → `ui-traits_leader_general.txt`
    - Governor → `ui-traits_leader_governor.txt`
-   - Ruler → `ui-traits_leader_ruler.txt`
-   - Class-agnostic → `ui-traits_leader.txt`
+   - Ruler / councilor → `ui-traits_leader_ruler.txt`
+   - Available to all classes → `ui-traits_leader.txt`
 
-3. **Declare the mandatory fields.** Every existing trait declares `cost`, `modifier`, `leader_trait`, and `leader_class`:
+   File placement is for readability only; scope comes from the fields below.
+
+3. **Declare the mandatory fields.** Every trait declares the icon script, one scoped
+   modifier block, `leader_class`, and `selectable_weight`:
 
    ```text
    ui_trait_governor_example = {
-       cost = 1
-       modifier = {
+       inline_script = {
+           script = trait/icon
+           CLASS = official
+           ICON = "GFX_ui_trait_governor_example"
+           RARITY = common
+           COUNCIL = no
+           TIER = 1
+       }
+       planet_modifier = {
            planet_jobs_unity_produces_mult = 0.10
        }
-       leader_trait = { governor }
-       leader_class = { governor }
+       leader_class = { official commander scientist }
+       selectable_weight = {
+           weight = @shared_trait_weight
+           inline_script = paragon/governor_weight_mult
+       }
    }
    ```
 
-4. **Set `leader_trait` and `leader_class` consistently.** Use the same class set in both, matching the file the trait was added to.
+   Never use the unscoped `modifier = { }` block, and never use the removed `admiral`,
+   `general`, `governor` or `ruler` class tokens.
 
-5. **Declare `opposites` if the trait conflicts with existing ones.** Every identifier listed must exist as a mod trait or a vanilla trait. Add the reverse edge to each referenced mod trait if the exclusion is intended to be mutual; see the note on directionality below.
+4. **Choose the correct modifier block.** Governor traits use `planet_modifier`, fleet
+   traits `fleet_modifier`, army traits `army_modifier`, councilor traits
+   `councilor_modifier`, and leader-intrinsic traits `self_modifier`.
 
-6. **Declare `leader_potential_add` if the trait must be gated.** Follow the dominant pattern: exclude hive minds and machine intelligences unless there is a reason not to, and reject the fanatic form of any opposing ethic.
+5. **Declare `opposites` if the trait conflicts with existing ones.** Every identifier
+   listed must exist as a mod trait or a vanilla trait. Add the reverse edge to each
+   referenced mod trait if the exclusion is intended to be mutual; see the note on
+   directionality below.
 
-7. **Decide on `modification`.** Follow the class convention: governor and ruler traits declare `modification = no`; admiral, general, and class-agnostic traits do not declare the field.
+6. **Declare `leader_potential_add` if the trait must be gated.** Follow the dominant
+   pattern: exclude hive minds and machine intelligences unless there is a reason not to,
+   and reject the fanatic form of any opposing ethic. For subclass-scoped traits use:
 
-8. **Add the localisation pair.** In `localisation/english/ui-traits_l_english.yml`, add the description entry immediately before the name entry, grouped with the trait's class:
+   ```text
+   OR = {
+       has_paragon_dlc = no
+       has_trait = subclass_commander_admiral
+   }
+   ```
+
+   The `has_paragon_dlc = no` leg is mandatory, or the trait becomes unreachable without
+   the DLC. For economy governor traits, add `has_any_governor_focus = no` so the trait
+   does not compete with a vanilla focus.
+
+7. **Add the localisation pair.** In `localisation/english/ui-traits_l_english.yml`, add
+   the description entry immediately before the name entry, grouped with the trait's
+   class:
 
    ```yaml
     ui_trait_governor_example_desc:0 "Description text.§!\n"
     ui_trait_governor_example:0 "Display Name"
    ```
 
-   Both keys must match the identifier exactly, including spelling. Preserve the leading space, the `:0` marker, and the double quotes. Keep the file UTF-8 **with** BOM.
+   Both keys must match the identifier exactly, including spelling. Preserve the leading
+   space, the `:0` marker, and the double quotes. Never use a double quote inside the
+   quoted value — use `§H…§!` for emphasis instead. Keep the file UTF-8 **with** BOM.
 
-9. **Add or reuse an icon.** If the trait declares `icon`, either:
-   - Add a DDS file to `gfx/interface/icons/traits/` and reference it by full path, or
-   - Reference an existing vanilla icon path.
+8. **Add the sprite and, if needed, the texture.** Declare a `spriteType` whose `name` is
+   the `GFX_` value used in step 3:
 
-   Note the naming convention: icon filenames are theme-based and do not repeat the full trait identifier (for example `ui_trait_berserker.dds` serves `ui_trait_admiral_berserker`).
+   ```text
+   spriteType = {
+       name = "GFX_ui_trait_governor_example"
+       texturefile = "gfx/interface/icons/traits/ui_trait_governor_example.dds"
+   }
+   ```
 
-10. **Verify in game.** Deploy the descriptor and payload to the local mod directory, launch, and confirm the trait appears with the intended name, description, and icon, and that its eligibility and exclusions behave as intended.
+   Add the DDS file (29x29, uncompressed ARGB8888) to `gfx/interface/icons/traits/`, or
+   point the sprite at a vanilla texture. Icon filenames are theme-based and do not
+   repeat the full trait identifier.
 
-11. **Update documentation.** Revise [Component: trait catalogue](./components/trait-catalogue.md), [Component: leader traits](./components/leader-traits.md), [Data model](./data-model.md) counts, and [Behaviour: eligibility and exclusions](./behaviour/eligibility-and-exclusions.md) statistics.
+9. **Verify in game.** Deploy the descriptor and payload to the local mod directory,
+   launch, and confirm the trait appears with the intended name, description, and icon,
+   and that its eligibility and exclusions behave as intended.
+
+10. **Update documentation.** Revise [Component: trait catalogue](./components/trait-catalogue.md),
+    [Component: leader traits](./components/leader-traits.md), [Component: icons](./components/icons.md),
+    [Data model](./data-model.md) counts, and
+    [Behaviour: eligibility and exclusions](./behaviour/eligibility-and-exclusions.md)
+    statistics.
+
 
 ## Modifying an existing trait
 
@@ -61,14 +113,14 @@ The full procedure, in order.
 |--------|-------|-------|
 | Adjust a modifier value | Yes | Updates propagate on next load; no other file references values |
 | Add or remove a modifier entry | Yes | Same as above |
-| Change `cost` | Yes | |
-| Change `icon` | Yes | Ensure the new path resolves |
+| Change `ICON` | Yes | Ensure the new sprite resolves |
+| Change `RARITY`, `TIER` or `COUNCIL` | Yes | Affects the icon frame and the subtitle only |
+| Change `selectable_weight` | Yes | Affects offer frequency |
 | Add an entry to `opposites` | Yes | Ensure the identifier exists and consider the reverse edge |
 | Remove an entry from `opposites` | Yes | Verify the exclusion was not load-bearing for balance intent |
 | Change `leader_potential_add` | Yes | Re-verify in game |
-| Change `leader_trait` or `leader_class` | Yes, with care | Both must stay in agreement; changing scope moves the trait between pools |
-| Set or unset `modification` | Yes | Changes whether modification can add or remove it |
-| Change `initial` or `randomized` | Yes | |
+| Change `leader_class` | Yes, with care | Only `commander`, `official` and `scientist` are valid |
+| Change the modifier block scope | Yes, with care | Moves the effect to a different object; verify the keys are valid in the new scope |
 | **Rename the identifier** | **No** | Breaks localisation binding, every `opposites` reference, every `has_trait` reference, and existing saves. Add a new identifier and deprecate the old one instead. |
 | **Delete the trait** | **No** | Saves referencing it break. See [State and persistence](./state-and-persistence.md). |
 
@@ -84,8 +136,6 @@ The full procedure, in order.
 
 | Defect | Location | Fix |
 |--------|----------|-----|
-| `ui_trait_governor_consumer_idsustrialist_desc` misspelled | Line 28 | Rename to `ui_trait_governor_consumer_industrialist_desc` |
-| `ui_trait_governor_war_idsustrialist_desc` misspelled | Line 94 | Rename to `ui_trait_governor_war_industrialist_desc` |
 | `ui_trait_governor_securist` and `_desc` orphaned | Lines 86-87 | Either add a matching trait definition or remove the pair |
 
 ## Editing icons

@@ -1,14 +1,32 @@
-ui_trait_general_crusader = {
-    cost = 1
-    icon = "gfx/interface/icons/traits/ui_trait_crusader.dds"
-    
-    modifier = {
-        army_damage_mult = 0.075
-        army_morale = 0.15
+# Universum Infinitum - Character Traits
+# General traits - Stellaris 4.5 (Cygnus) leader system
+#
+# The legacy "general" leader class no longer exists in 4.x; ground-force commanders
+# are now "commander" leaders with the "commander_general" subclass. This trait is
+# scoped to the commander class and, when Galactic Paragons is active, restricted to
+# the general subclass so it stays army-only.
+#
+# A distinct mod trait is used instead of the vanilla leader_trait_crusader, which in
+# 4.x is a Paragon event trait and would collide with this definition.
+
+ui_trait_general_faith_militant = {
+    # Basic trait: remains attainable without Galactic Paragons, matching pre-4.x behaviour.
+    inline_script = {
+        script = trait/icon
+        CLASS = commander
+        ICON = "GFX_ui_trait_crusader"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
     }
 
     leader_potential_add = {
-        FROM = { 
+        trait_is_crisis_faction_check = no
+        OR = {
+            has_paragon_dlc = no
+            has_trait = subclass_commander_general
+        }
+        FROM = {
             OR = {
                 has_ethic = "ethic_spiritualist"
                 has_ethic = "ethic_fanatic_spiritualist"
@@ -16,6 +34,26 @@ ui_trait_general_crusader = {
         }
     }
 
-    leader_trait = { general }
-    leader_class = { general }
+    army_modifier = {
+        army_damage_mult = 0.075
+        army_morale = 0.15
+    }
+
+    leader_class = { commander }
+
+    # The vanilla Paragons event trait occupies the same thematic slot and grants
+    # army_damage_mult and army_morale too; exclude both tiers so the bonuses never stack.
+    opposites = {
+        "leader_trait_crusader"
+        "leader_trait_crusader_2"
+    }
+
+    selectable_weight = {
+        weight = @class_trait_weight
+        inline_script = paragon/army_weight_mult
+        inline_script = {
+            script = paragon/subclass_weight_mult
+            SUBCLASS = commander_general
+        }
+    }
 }

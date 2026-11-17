@@ -34,8 +34,7 @@ These are present in the current revision and represent real, reproducible misbe
 
 | Defect | Location | Effect |
 |--------|----------|--------|
-| Misspelled description key `ui_trait_governor_consumer_idsustrialist_desc` | `ui-traits_l_english.yml` line 28 | `ui_trait_governor_consumer_industrialist` has no description; the misspelled key is orphaned |
-| Misspelled description key `ui_trait_governor_war_idsustrialist_desc` | `ui-traits_l_english.yml` line 94 | `ui_trait_governor_war_industrialist` has no description; the misspelled key is orphaned |
+| Orphaned key pair `ui_trait_governor_securist` / `_desc` | `ui-traits_l_english.yml` | No trait definition binds them; the keys and their icon are inert |
 | Orphaned localisation pair `ui_trait_governor_securist` / `_desc` | `ui-traits_l_english.yml` lines 86-87 | Keys bind to nothing; a matching icon file exists unused |
 | Unquoted list member `ui_trait_governor_consumer_industrialist` | `ui-traits_leader_governor.txt` line 410 | Inside `ui_trait_governor_war_industrialist`'s `opposites`; the other 7 members are quoted. Parsing outcome unverified |
 | Double space before `=` | `ui_trait_governor_chemist = {`, `ui_trait_governor_metallurgist = {` | Cosmetic; no functional effect evidenced |

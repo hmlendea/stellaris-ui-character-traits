@@ -1,0 +1,188 @@
+### Universum Infinitum - Character Traits
+### Sprite definitions for the mod's trait icons.
+###
+### Since Galactic Paragons (and therefore Stellaris 4.x) leader trait icons are
+### declared as sprites referenced from the trait definition, rather than as a raw
+### texture path. These entries expose the DDS files shipped in
+### gfx/interface/icons/traits/ under names referenced by ui-traits_leader_*.txt.
+
+spriteTypes = {
+	spriteType = {
+		name = "GFX_ui_trait_berserker"
+		texturefile = "gfx/interface/icons/traits/ui_trait_berserker.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_guerillero"
+		texturefile = "gfx/interface/icons/traits/ui_trait_guerillero.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_glass_cannon"
+		texturefile = "gfx/interface/icons/traits/ui_trait_glass_cannon.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_sniper"
+		texturefile = "gfx/interface/icons/traits/ui_trait_sniper.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_stormer"
+		texturefile = "gfx/interface/icons/traits/ui_trait_stormer.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_testudo"
+		texturefile = "gfx/interface/icons/traits/ui_trait_testudo.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_crusader"
+		texturefile = "gfx/interface/icons/traits/ui_trait_crusader.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_politically_connected"
+		texturefile = "gfx/interface/icons/traits/ui_trait_politically_connected.dds"
+	}
+
+	spriteType = {
+		name = "GFX_ui_trait_governor_chemist"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_chemist.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_consumer_industrialist"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_consumer_industrialist.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_corporatist"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_corporatist.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_cultural_interest"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_cultural_interest.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_deal_with_the_devil"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_deal_with_the_devil.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_environmentalist"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_environmentalist.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_familist"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_familist.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_fortifier"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_fortifier.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_green_energy_advocate"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_green_energy_advocate.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_guns_legaliser"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_guns_legaliser.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_guns_prohibitor"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_guns_prohibitor.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_ideologue_authoritarian"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_ideologue_authoritarian.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_ideologue_egalitarian"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_ideologue_egalitarian.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_ideologue_materialist"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_ideologue_materialist.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_ideologue_militarist"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_ideologue_militarist.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_ideologue_pacifist"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_ideologue_pacifist.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_ideologue_spiritualist"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_ideologue_spiritualist.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_ideologue_xenophile"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_ideologue_xenophile.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_ideologue_xenophobe"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_ideologue_xenophobe.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_metallurgist"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_metallurgist.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_miner"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_miner.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_moral_authority"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_moral_authority.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_naturalist"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_naturalist.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_open_armed"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_open_armed.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_populist"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_populist.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_questionable_ethics"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_questionable_ethics.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_racist"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_racist.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_robotics_magnate"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_robotics_magnate.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_settler"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_settler.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_vicious_rumours"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_vicious_rumours.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_governor_war_industrialist"
+		texturefile = "gfx/interface/icons/traits/ui_trait_governor_war_industrialist.dds"
+	}
+
+	spriteType = {
+		name = "GFX_ui_trait_ruler_antique_collector"
+		texturefile = "gfx/interface/icons/traits/ui_trait_ruler_antique_collector.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_ruler_backroom_backstabber"
+		texturefile = "gfx/interface/icons/traits/ui_trait_ruler_backroom_backstabber.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_ruler_efficient_bureaucrat"
+		texturefile = "gfx/interface/icons/traits/ui_trait_ruler_efficient_bureaucrat.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_ruler_hardcore_bureaucrat"
+		texturefile = "gfx/interface/icons/traits/ui_trait_ruler_hardcore_bureaucrat.dds"
+	}
+	spriteType = {
+		name = "GFX_ui_trait_ruler_smoothtalking_charmer"
+		texturefile = "gfx/interface/icons/traits/ui_trait_ruler_smoothtalking_charmer.dds"
+	}
+}

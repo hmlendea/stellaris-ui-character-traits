@@ -14,7 +14,7 @@ sequenceDiagram
     participant Mod as Mod payload
     Player->>Launcher: Launch game
     Launcher->>Mod: Read ui-character-traits.mod
-    Launcher->>Launcher: Validate supported_version 3.2.*
+    Launcher->>Launcher: Validate supported_version v4.5.*
     Launcher->>Player: Mod compatible
     Launcher->>Engine: Start with enabled mod list
     Engine->>Mod: Merge common/traits into virtual filesystem
@@ -37,7 +37,7 @@ The launcher locates `ui-character-traits.mod` in the mod directory, or `ui-char
 name="Universum Infinitum - Character Traits"
 path="mod/ui-character-traits"
 tags={ "Characters" }
-supported_version="3.2.*"
+supported_version="v4.5.*"
 ```
 
 The launcher resolves `path` to the payload directory and validates `supported_version` against the installed game version.
@@ -69,7 +69,7 @@ The engine parses each trait document, then:
 3. Stores `modifier` blocks for later application.
 4. Stores `leader_potential_add` condition blocks for offer-time evaluation.
 5. Stores `opposites` lists for offer-time subtraction.
-6. Records `icon`, `cost`, `modification`, `initial`, and `randomized` flags.
+6. Resolves the `trait/icon` inline script, records the named sprite, the selected modifier scope, and the `selectable_weight`.
 
 A parse error in one document drops that document; depending on the error class, it may also affect subsequent content in the same file. Because the governor file holds 34 of the 47 definitions, a syntax error there has the largest blast radius.
 
