@@ -29,14 +29,18 @@ For the detailed description of how the application handles privacy and personal
 
 The mod consists of local game definitions, localisation, and image assets. It has no built-in personal-data transfer; interactions with distribution platforms are separate from mod execution.
 
-# Contributions
+## 🤝 Contributing
 
-You are welcome to bring any suggestion, feedback or modification to this project.
+You are welcome to submit any suggestion, feedback, or modification to this project.
 
-Here are a few ways in which you can do so:
- - Commenting directly on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2048878128) page
- - Raising a new [issue](https://github.com/hmlendea/stellaris-ui-character-traits/issues) for this project
- - Creating a git pull request _(This requires git knowledge)_
+When doing so, please:
+- Maintain cross-platform compatibility
+- Submit focused pull requests that conform to the existing code style
+- Maintain your branch synchronised with `master`
+- Revise the documentation when functionality changes
+- Raise a new [issue](https://github.com/hmlendea/stellaris-ui-character-traits/issues) for problems or suggestions
+
+See the [Contributing Guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
 
 # Universul Unfinitum Collection
 
