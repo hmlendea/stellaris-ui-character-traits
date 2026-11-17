@@ -29,6 +29,12 @@ For the detailed description of how the application handles privacy and personal
 
 The mod consists of local game definitions, localisation, and image assets. It has no built-in personal-data transfer; interactions with distribution platforms are separate from mod execution.
 
+## 🏗️ Architecture
+
+Universum Infinitum - Character Traits follows a declarative data-driven plugin architecture for Stellaris.
+
+See the [Architecture](./ARCHITECTURE.md) for the system context, principal components, runtime flows, ownership boundaries, dependencies, constraints, and extension points.
+
 ## 🤝 Contributing
 
 You are welcome to submit any suggestion, feedback, or modification to this project.
