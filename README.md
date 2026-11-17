@@ -21,6 +21,14 @@ It is actively tested (and developed) on **Linux**, where it is guaranteed to wo
 
 It should also be compatible with any other mods.
 
+# Privacy and Data
+
+Universum Infinitum - Character Traits does not request, collect, transmit, or persist personal data.
+
+For the detailed description of how the application handles privacy and personal data, see the [Privacy Statement](./PRIVACY.md).
+
+The mod consists of local game definitions, localisation, and image assets. It has no built-in personal-data transfer; interactions with distribution platforms are separate from mod execution.
+
 # Contributions
 
 You are welcome to bring any suggestion, feedback or modification to this project.
