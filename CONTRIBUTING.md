@@ -1,4 +1,4 @@
-[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/fund.html)
+[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
 
 # Contributing to Universum Infinitum - Character Traits
 
@@ -88,7 +88,7 @@ Report security vulnerabilities per the [Security Policy](./SECURITY.md).
 
 ## 💝 Donations
 
-This project is developed and maintained during spare time. If you find it useful, consider [donating](https://hmlendea.go.ro/fund.html) and giving it a star ⭐️ on GitHub!
+This project is developed and maintained during spare time. If you find it useful, consider [donating](https://hmlendea.go.ro/funding) and giving it a star ⭐️ on GitHub!
 
 ## 📄 License
 

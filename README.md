@@ -1,4 +1,4 @@
-[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/fund.html)
+[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
 [![Latest Release](https://img.shields.io/github/v/release/hmlendea/stellaris-ui-character-traits)](https://github.com/hmlendea/stellaris-ui-character-traits/releases/latest)
 [![License](https://img.shields.io/github/license/hmlendea/stellaris-ui-character-traits)](https://github.com/hmlendea/stellaris-ui-character-traits/blob/master/LICENSE)
 
@@ -193,9 +193,9 @@ For support, please [open an issue](https://github.com/hmlendea/stellaris-ui-cha
 
 Discovered a problem with Universum Infinitum - Character Traits or have a suggestion for it? [Open an issue](https://github.com/hmlendea/stellaris-ui-character-traits/issues)!
 
-If you find this project useful, consider [funding it](https://hmlendea.go.ro/fund.html) or starring ⭐️ it on GitHub, or giving it a thumbs up and adding it as a favourite on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2048878128)!
+If you find this project useful, consider [funding it](https://hmlendea.go.ro/funding) or starring ⭐️ it on GitHub, or giving it a thumbs up and adding it as a favourite on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2048878128)!
 
-[![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)](https://hmlendea.go.ro/fund.html)
+[![Donate](https://raw.githubusercontent.com/hmlendea/readme-assets/master/donate_generic.png)](https://hmlendea.go.ro/funding)
 
 ## 📄 License
 
