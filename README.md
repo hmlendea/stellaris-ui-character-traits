@@ -46,6 +46,12 @@ See the [Contributing Guidelines](./CONTRIBUTING.md) for details on how to repor
 
 See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct expected in all project spaces.
 
+## 🔒 Security
+
+Universum Infinitum - Character Traits distributes only local game definitions, localisation, and image assets.
+
+For information on reporting security vulnerabilities, see the [Security Policy](./SECURITY.md).
+
 # Universul Unfinitum Collection
 
  - [Character Traits](https://github.com/hmlendea/stellaris-ui-character-traits)

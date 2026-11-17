@@ -16,6 +16,7 @@ This document covers the guidelines and processes for contributing to this proje
     - [Pull Request Guidelines](#pull-request-guidelines)
   - [Documentation](#documentation)
 - [Code of Conduct](#-code-of-conduct)
+- [Security](#-security)
 - [Donations](#-donations)
 - [License](#-license)
 - [Getting Assistance](#-getting-assistance)
@@ -77,11 +78,15 @@ cd stellaris-ui-character-traits
 - Follow the documentation style guide.
 - Preview changes locally if possible.
 
-## � Code of Conduct
+## 📜 Code of Conduct
 
 This project follows the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
-## �💝 Donations
+## 🔒 Security
+
+Report security vulnerabilities per the [Security Policy](./SECURITY.md).
+
+## 💝 Donations
 
 This project is developed and maintained during spare time. If you find it useful, consider [donating](https://hmlendea.go.ro/fund.html) and giving it a star ⭐️ on GitHub!
 
