@@ -15,6 +15,7 @@ This document covers the guidelines and processes for contributing to this proje
     - [Making Changes](#making-changes)
     - [Pull Request Guidelines](#pull-request-guidelines)
   - [Documentation](#documentation)
+- [Code of Conduct](#-code-of-conduct)
 - [Donations](#-donations)
 - [License](#-license)
 - [Getting Assistance](#-getting-assistance)
@@ -76,7 +77,11 @@ cd stellaris-ui-character-traits
 - Follow the documentation style guide.
 - Preview changes locally if possible.
 
-## 💝 Donations
+## � Code of Conduct
+
+This project follows the [Code of Conduct](./CODE_OF_CONDUCT.md).
+
+## �💝 Donations
 
 This project is developed and maintained during spare time. If you find it useful, consider [donating](https://hmlendea.go.ro/fund.html) and giving it a star ⭐️ on GitHub!
 
