@@ -60,7 +60,7 @@ No content change can execute code, exfiltrate data, or persist outside the game
 | Unofficial mirrors or repacks | Distribution outside controlled channels | Marked unsupported in `SECURITY.md` |
 | Malicious pull request | A contribution could alter modifiers or add shadowing files | Requires reviewer scrutiny; no automated diff gating |
 | Release archive mismatch | The release archive is built by `.github/workflows/github-release.yml` from the tagged revision with the automatic `GITHUB_TOKEN`, so it matches the release tag rather than being assembled by hand | Maintainer action is limited to tagging and publishing the release |
-| Silent drift between the repository and a distribution channel | Steam Workshop and GitHub Releases publication are automated from the same tag, so both channels receive identical content; Paradox Mods and Nexus Mods remain manual and can lag | Maintainer |
+| Silent drift between the repository and a distribution channel | Steam Workshop, Nexus Mods, and GitHub Releases publication are automated from the same tag, so those channels receive identical content; Paradox Mods remains manual and can lag | Maintainer |
 | Silent degradation on game update | A removed vanilla identifier disables an exclusion without an error | Requires re-verification on version change |
 | No content validation | Malformed content is caught only by the engine at load time | Manual review |
 
@@ -75,7 +75,7 @@ No content change can execute code, exfiltrate data, or persist outside the game
 | Secrets in the repository | None |
 | Credentials, tokens, or keys | None |
 | Automated dependency scanning | Not applicable; no dependencies |
-| Release archive provenance | `.github/workflows/github-release.yml` builds the archive from the tagged revision and attaches it to the published release; `.github/workflows/steam-workshop-release.yml` uploads the same tagged content to Steam Workshop |
+| Release archive provenance | `.github/workflows/github-release.yml` builds the archive from the tagged revision and attaches it to the published release; `.github/workflows/steam-workshop-release.yml` and `.github/workflows/nexus-mods-release.yml` upload the same tagged content to Steam Workshop and Nexus Mods |
 | SBOM | Not present |
 | Signed releases | Not evidenced |
 

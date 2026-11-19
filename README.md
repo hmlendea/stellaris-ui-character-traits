@@ -111,6 +111,7 @@ The mod consists of local game definitions, localisation, and image assets. It h
 | Workflow | Purpose | What it does |
 |----------|---------|--------------|
 | [ github-release.yml ](https://github.com/hmlendea/stellaris-ui-character-traits/blob/master/.github/workflows/github-release.yml) | Publish the release archive to GitHub Releases | Runs when a GitHub release is published, or on a manual dispatch with a `tag` input, writes the version into both descriptors, builds `ui-character-traits_<version>.zip` containing `ui-character-traits/` and `ui-character-traits.mod`, and uploads it with the `softprops/action-gh-release` action |
+| [ nexus-mods-release.yml ](https://github.com/hmlendea/stellaris-ui-character-traits/blob/master/.github/workflows/nexus-mods-release.yml) | Release to Nexus Mods | Runs on a `v*.*.*` tag push or a manual dispatch with a `tag` input, writes the version into both descriptors, zips the descriptor and content directory into `release.zip`, and uploads it to Nexus Mods file `955051` |
 | [ steam-workshop-release.yml ](https://github.com/hmlendea/stellaris-ui-character-traits/blob/master/.github/workflows/steam-workshop-release.yml) | Release to Steam Workshop | Runs on a `v*.*.*` tag push or a manual dispatch with a `tag` input, writes the version into both descriptors, zips and extracts the descriptor and content directory, and uploads the content directory to Workshop item `2048878128` with a changelog link |
 
 ## 🗂️ Project Structure
