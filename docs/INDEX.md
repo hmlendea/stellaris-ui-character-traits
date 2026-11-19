@@ -96,6 +96,6 @@ The following documentation areas are intentionally absent because no repository
 |-------|-------|
 | Last reviewed | 2026-11-17 |
 | Repository revision reviewed | `af12aaa` (`master`) |
-| Content coverage | All 5 trait definition files, 1 localisation file, 45 icon assets, 2 descriptor files, 5 root documents, `.github/` assets |
+| Content coverage | All 5 trait definition files, 1 localisation file, 45 icon assets, 2 descriptor files, 5 root documents, `.github/` assets, 1 workflow |
 | Coverage status | Complete for content; no executable artefacts exist to document |
 | Known gaps | Engine-internal parsing behaviour is described from the mod side only; vanilla identifiers are referenced but cannot be verified from this repository |

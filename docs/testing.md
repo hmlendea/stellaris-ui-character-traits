@@ -2,7 +2,7 @@
 
 ## Automated tests
 
-None. The repository contains no test framework, no test files, no test fixtures, no CI workflow, and no assertion harness. The directory listing shows no `tests/`, `test/`, `spec/`, or `.github/workflows/` directory.
+None. The repository contains no test framework, no test files, no test fixtures, no validation workflow, and no assertion harness. Its only workflow, `.github/workflows/github-release.yml`, packages the tagged content and attaches the release archive. The directory listing shows no `tests/`, `test/`, or `spec/` directory.
 
 | Test category | Status |
 |---------------|--------|

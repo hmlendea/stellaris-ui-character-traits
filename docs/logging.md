@@ -47,7 +47,7 @@ No Stellaris installation path or log directory is declared in this repository; 
 
 ## Absence of repository tooling
 
-There is no script, task, or workflow in this repository that validates trait definitions, localisation pairing, or icon references. All consistency checking is manual and in-game. This is the single largest maintenance risk of the repository and is recorded in [Testing](./testing.md) and [Ambiguities and open questions](./ambiguities-and-open-questions.md).
+There is no script, task, or validation workflow in this repository that validates trait definitions, localisation pairing, or icon references. The only workflow, `.github/workflows/github-release.yml`, packages the tagged content and attaches the release archive; it performs no consistency checking. All consistency checking is manual and in-game. This is the single largest maintenance risk of the repository and is recorded in [Testing](./testing.md) and [Ambiguities and open questions](./ambiguities-and-open-questions.md).
 
 ## Diagnostic commands available to a contributor
 
