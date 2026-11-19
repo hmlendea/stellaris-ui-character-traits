@@ -162,10 +162,18 @@ The full procedure, in order.
 
 ## Exclusions: the directionality caution
 
-`opposites` declarations are not consistently symmetric in this corpus. Seven edges are declared in one direction only. Whether the engine treats the relationship as symmetric is unverified. When adding an exclusion:
+`opposites` declarations are not consistently symmetric in this corpus. Seven edges are declared in one direction only.
 
-- Declare it on **both** traits if mutual exclusion is intended, matching the pattern used by the admiral pairs and the ideologue pairs.
-- Declare it on one trait only if the intent is intentionally one-sided, and note why.
+## Release process
+
+`.github/workflows/github-release.yml` automates the GitHub Releases channel. It runs when a GitHub release is published, or on a manual dispatch with a `tag` input, and it writes the version into both descriptors, builds `ui-character-traits_<version>.zip` from `ui-character-traits/` and `ui-character-traits.mod`, and attaches the archive to the release. Steam Workshop, Paradox Mods, and Nexus Mods remain manual uploads.
+
+To publish:
+
+1. Update both descriptors' `supported_version` if targeting a new game-version family.
+2. Run the cross-checks against the tagged contents, not just the working tree.
+3. Tag the revision and publish the GitHub release; the workflow writes the version, builds the archive, and attaches it.
+4. Upload the same content set manually to Steam Workshop, Paradox Mods, and Nexus Mods so that no channel drifts.
 
 ## Documentation synchronisation
 
@@ -183,8 +191,9 @@ After any content change, review and update:
 | [Dependencies](./dependencies.md) | A vanilla reference is added or removed |
 | [Compatibility](./compatibility.md) | `supported_version` changes or a vanilla reference fails to resolve |
 | [Ambiguities and open questions](./ambiguities-and-open-questions.md) | A question is resolved or a new one arises |
-| [README.md](../README.md) | Installation, compatibility, or privacy statements change |
+| [README.md](../README.md) | Installation, compatibility, privacy, or workflow statements change |
 | [ARCHITECTURE.md](../ARCHITECTURE.md) | Architecture, constraints, or extension points change |
+| [Build and deployment](./build-and-deployment.md) | A workflow, distribution channel, or release procedure changes |
 
 ## Related documents
 

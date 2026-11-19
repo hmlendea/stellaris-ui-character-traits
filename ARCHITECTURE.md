@@ -317,7 +317,7 @@ The mod is a static archive with no process topology, no persistent state, and n
 
 ## ✅ Testing and Verification
 
-No automated test suite, build script, or continuous-integration workflow exists in this repository. Verification is manual and performed against a local Stellaris installation.
+No automated test suite, build script, or validation workflow exists in this repository. The only workflow, `.github/workflows/github-release.yml`, packages the tagged content and attaches the release archive; it validates nothing. Verification is manual and performed against a local Stellaris installation.
 
 Manual verification covers: the descriptor is recognised by the launcher and the mod can be enabled; every trait in `common/traits/` appears in the leader trait interface with the expected name and description; eligibility conditions admit and reject leaders of the intended ethics, authorities, and classes; `opposites` exclusions prevent mutually exclusive traits from coexisting; modifiers take effect as declared; icon references render as intended, including the three governor traits that reuse vanilla icons; and the game error log reports no trait or localisation errors attributable to this mod.
 
@@ -356,6 +356,7 @@ The extension must preserve the `ui_trait_` identifier prefix, must not reuse an
 | Localisation | `ui-character-traits/localisation/english/ui-traits_l_english.yml` |
 | Trait Icons | `ui-character-traits/gfx/interface/icons/traits/` |
 | Thumbnail | `ui-character-traits/thumbnail.png` |
+| Release Automation | `.github/workflows/github-release.yml` |
 | Distribution Assets | `.github/cover.png`, `.github/FUNDING.yml` |
 
 ## 📚 Related Documentation

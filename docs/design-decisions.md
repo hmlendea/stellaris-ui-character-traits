@@ -127,11 +127,11 @@ one that uses a `self_modifier`.
 
 ## No automated validation
 
-**Decision.** The repository contains no build, test, script, or CI workflow.
+**Decision.** The repository contains no build, test, or validation workflow. Its only workflow, `.github/workflows/github-release.yml`, packages the tagged content and attaches the release archive; it validates nothing.
 
-**Evidence.** No build manifest, no test directory, and no `.github/workflows/` exist.
+**Evidence.** No build manifest, no test directory, and no validation workflow exist. `.github/workflows/` contains only `github-release.yml`.
 
-**Rationale (inferred).** The content set is small enough to review by hand, and the mod predates the addition of the `.github/` directory, which contains only funding and cover assets.
+**Rationale (inferred).** The content set is small enough to review by hand, and the mod predates the addition of the `.github/` directory, which originally contained only funding and cover assets.
 
 **Consequences.** Two missing description keys, one orphaned localisation pair, and seven asymmetric exclusions exist undetected. This is the repository's largest maintenance risk. See [Testing](./testing.md).
 

@@ -18,6 +18,7 @@ Mod that adds various new character traits to Stellaris.
 - [Localisation](#-localisation)
 - [Compatibility](#-compatibility)
 - [Privacy and Data](#-privacy-and-data)
+- [GitHub Actions](#-github-actions)
 - [Project Structure](#-project-structure)
   - [Directories](#directories)
 - [Architecture](#-architecture)
@@ -105,6 +106,12 @@ For the detailed description of how the application handles privacy and personal
 
 The mod consists of local game definitions, localisation, and image assets. It has no built-in personal-data transfer; interactions with distribution platforms are separate from mod execution.
 
+## ⚙️ GitHub Actions
+
+| Workflow | Purpose | What it does |
+|----------|---------|--------------|
+| [ github-release.yml ](https://github.com/hmlendea/stellaris-ui-character-traits/blob/master/.github/workflows/github-release.yml) | Publish the release archive to GitHub Releases | Runs when a GitHub release is published, or on a manual dispatch with a `tag` input, writes the version into both descriptors, builds `ui-character-traits_<version>.zip` containing `ui-character-traits/` and `ui-character-traits.mod`, and uploads it with the `softprops/action-gh-release` action |
+
 ## 🗂️ Project Structure
 
 The repository is a single Stellaris mod: one descriptor at the repository root, one payload directory containing the mod content, and the repository policy documents.
@@ -117,6 +124,7 @@ The repository is a single Stellaris mod: one descriptor at the repository root,
 | `ui-character-traits/interface/` | Sprite definitions that expose the mod's trait icons to the engine |
 | `ui-character-traits/localisation/english/` | English trait names and descriptions |
 | `ui-character-traits/gfx/interface/icons/traits/` | DDS trait icon assets |
+| `.github/workflows/` | Release packaging and publication automation |
 | `docs/` | Repository knowledge base |
 
 ## 🏗️ Architecture

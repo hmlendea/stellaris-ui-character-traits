@@ -53,7 +53,7 @@ The mod initiates no outbound interaction at any point. Every integration is con
 | Steam Workshop | The payload and the descriptor | Item listing, description, tags, screenshots, version notes |
 | Paradox Mods | The payload and the descriptor | Listing metadata |
 | Nexus Mods | The payload and the descriptor | Listing metadata |
-| GitHub Releases | The payload, the descriptor, Git tags, and release assets | Release notes beyond the tag annotation |
+| GitHub Releases | The payload, the descriptor, Git tags, and the release archive built by `.github/workflows/github-release.yml` | Release notes beyond the tag annotation |
 
 No platform-specific code, path, or behaviour exists in the mod. The same payload serves every channel.
 
