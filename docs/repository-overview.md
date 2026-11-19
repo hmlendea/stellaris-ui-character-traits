@@ -40,7 +40,7 @@ The repository deliberately does not own:
 | `ui-character-traits/localisation/english/ui-traits_l_english.yml` | Stellaris engine | Display names and descriptions |
 | `ui-character-traits/gfx/interface/icons/traits/*.dds` | Stellaris engine | Icon assets resolved through `icon` references |
 
-The two descriptor files are byte-identical. Both declare `name="Universum Infinitum - Character Traits"`, `path="mod/ui-character-traits"`, `tags={ "Characters" }`, and `supported_version="3.2.*"`.
+The two descriptor files are byte-identical. Both declare `name="Universum Infinitum - Character Traits"`, `path="mod/ui-character-traits"`, `tags={ "Characters" }`, and `supported_version="v4.5.*"`.
 
 ## Intended audience
 

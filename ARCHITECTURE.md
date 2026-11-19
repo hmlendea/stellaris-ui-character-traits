@@ -36,7 +36,7 @@ This document describes the current architecture of the Universum Infinitum - Ch
 
 ## 🎯 Purpose
 
-The mod extends Stellaris with additional leader traits for the admiral, general, governor, and ruler leader classes. Its architectural responsibility is to supply declarative trait definitions, their English localisation, and their icon assets so that the Stellaris engine can present and apply them during leader trait acquisition. The system boundary is a static data package: the repository ships no executable code, no build step, and no runtime service. The intended audience is maintainers and contributors who need to add, revise, or remove leader traits without breaking trait identity, localisation pairing, or icon resolution.
+The mod extends Stellaris with additional leader traits, mapped onto the post-4.x leader model: `commander` leaders (fleet and army), `official`/`scientist` governors, and councilors including the empire ruler. Its architectural responsibility is to supply declarative trait definitions, their English localisation, and their icon assets so that the Stellaris engine can present and apply them during leader trait acquisition. The system boundary is a static data package: the repository ships no executable code, no build step, and no runtime service. The intended audience is maintainers and contributors who need to add, revise, or remove leader traits without breaking trait identity, localisation pairing, or icon resolution.
 
 ## 🌐 System Context
 
@@ -75,9 +75,9 @@ flowchart TB
 
 The principal architecture boundaries are:
 - **Descriptor boundary:** `ui-character-traits.mod` and `ui-character-traits/descriptor.mod` declare mod identity, path, tags, and `supported_version`; they are the launcher-facing contract.
-- **Trait definition boundary:** `common/traits/*.txt` owns trait identity, cost, modifiers, eligibility conditions, exclusions, and icon references.
+- **Trait definition boundary:** `common/traits/*.txt` owns trait identity, scoped modifiers, eligibility conditions, exclusions, sprite references, and selection weight.
 - **Localisation boundary:** `localisation/english/*.yml` owns player-visible names and descriptions keyed by trait identifier.
-- **Asset boundary:** `gfx/interface/icons/traits/*.dds` owns the icon images referenced by trait definitions and by vanilla trait identifiers.
+- **Asset boundary:** `gfx/interface/icons/traits/*.dds` owns the icon textures, and `interface/ui_character_traits.gfx` owns the sprite definitions that expose them to trait definitions.
 
 ## 🔄 Runtime Process
 
@@ -103,7 +103,7 @@ The principal runtime sequence is:
 3. The game engine starts and loads every enabled mod directory.
 4. The engine parses the trait definitions in `common/traits/`, registering trait identifiers, costs, modifiers, leader class and class-scope restrictions, eligibility conditions, and mutual exclusions.
 5. The engine loads the localisation entries that supply trait names and descriptions.
-6. The engine loads the trait icon assets referenced by parsed trait definitions.
+6. The engine resolves each trait's `trait/icon` inline script, looks up the named sprite, and loads the texture that sprite points at.
 7. The leader interface presents the added traits subject to leader class, eligibility, and exclusion rules.
 
 ## 🗂️ Architectural Areas
@@ -135,13 +135,13 @@ Paths:
 Responsibilities:
 - Define 47 leader traits: 6 admiral traits, 1 general trait, 34 governor traits, 5 ruler traits, and 1 class-agnostic leader trait.
 - Own each trait's cost, modifiers, eligibility conditions, mutual exclusions, and leader class and class-scope restrictions.
-- Reference trait icons by repository-relative asset path or by vanilla icon name.
+- Reference trait icons by sprite name: either a sprite the mod declares in `interface/ui_character_traits.gfx` or a vanilla sprite supplied by the base game.
 
 Boundary rules:
 - Trait identifiers use the `ui_trait_` prefix; custom identifiers must not collide with vanilla `leader_trait_*` identifiers.
 - `opposites` lists must reference existing trait identifiers, whether vanilla or custom.
 - Trait definitions must not reference other mod files by path; coupling to localisation and assets occurs through identifier and icon reference only.
-- Files are split by leader class, but a trait's effective scope is determined by its `leader_trait` and `leader_class` values, not by file placement.
+- Files are split by legacy leader class for readability, but a trait's effective scope is determined by its `leader_class`, its modifier block, and its `leader_potential_add` conditions, not by file placement.
 
 ### Localisation Area
 
@@ -165,13 +165,13 @@ Paths:
 - `ui-character-traits/thumbnail.png`
 
 Responsibilities:
-- Provide 45 DDS icon assets named after leader traits.
+- Provide 45 DDS icon assets and 44 sprite definitions; one icon (`ui_trait_governor_securist.dds`) is currently unreferenced.
 - Provide the workshop and store thumbnail.
 
 Boundary rules:
 - Icons must be DDS format, as required by the engine.
 - Icon files reside directly in `traits/` with no subdirectories.
-- An icon is resolved only when a trait definition names it in an `icon` field; the remaining files are inert assets until referenced.
+- An icon is resolved only when a trait's `trait/icon` script names the corresponding sprite; the remaining files are inert assets until referenced.
 
 ## 💾 Data Architecture
 
@@ -200,7 +200,7 @@ flowchart LR
 | Mod descriptor | Inbound | `name`, `path`, `tags`, `supported_version` in `.mod` files | Descriptor Area | Unreadable or version-mismatched descriptor leaves the mod unregistered or disabled by the launcher |
 | Trait definitions | Inbound | Clausewitz trait blocks in `common/traits/*.txt` | Leader Trait Definition Area | Parse failure drops the affected trait; unknown identifiers in `opposites` leave exclusion unresolved |
 | Localisation | Inbound | `l_english:` keys matching trait identifiers | Localisation Area | Missing key causes the raw identifier to be displayed instead of a name |
-| Trait icons | Inbound | `icon = "gfx/interface/icons/traits/<name>.dds"` or a vanilla icon name | Trait Icon Area | Unresolvable icon path falls back to a default or placeholder graphic |
+| Trait icons | Inbound | `ICON = "GFX_<sprite>"` inside the `trait/icon` inline script | Trait Icon Area | An unresolvable sprite falls back to a default or placeholder graphic |
 | Distribution platforms | Inbound | Packaged mod archives delivered by the platform client | External | Out of the mod's control; the repository declares no platform-specific behaviour |
 
 ## 🔀 Key Processes
@@ -219,20 +219,20 @@ sequenceDiagram
     UI->>Engine: Leader acquires trait
 ```
 
-Eligibility is evaluated by the engine against the trait definition, not by the mod. Of the 47 trait definitions, 21 declare a `leader_potential_add` block that gates the trait behind ethics, authorities, or the absence of conflicting vanilla or custom traits; 37 declare an `opposites` block that removes mutually exclusive traits from the same offer. Eight traits omit both `opposites` and `modification`, and five of those additionally declare `initial = yes` or `randomized = yes` in `ui-traits_leader.txt`. Trait scope is enforced through `leader_trait` and `leader_class` values: 34 traits are governor-scoped, 6 admiral-scoped, 5 ruler-scoped, and 1 general-scoped, while one trait declares the scope `{ admiral scientist general governor }` and excludes the ruler class through its eligibility condition.
+Eligibility is evaluated by the engine against the trait definition, not by the mod. Of the 47 trait definitions, 36 declare a `leader_potential_add` block that gates the trait behind leader subclass, ruler status, ethics, authorities, an existing governor focus, or the absence of conflicting vanilla or custom traits; 38 declare an `opposites` block that removes mutually exclusive traits from the same offer. All 47 declare a `selectable_weight` block. Trait scope is enforced through `leader_class` and the chosen modifier block: 34 traits are planet-scoped governors available to `official`, `commander` and `scientist`; 6 are fleet-scoped `commander` traits gated on the admiral subclass; 1 is an army-scoped `commander` trait gated on the general subclass; 5 are councilor-scoped traits gated on ruler status or a councilor subclass; and 1 is a leader-scoped trait available to all three classes but excluding the ruler.
 
 ## ⚙️ Trait Definition Model
 
 A leader trait is a single Clausewitz block keyed by its trait identifier. The fields observed across the 47 definitions are:
 
 - `cost`: trait selection cost; every definition sets `1`.
-- `icon`: asset path or vanilla icon name; declared by 11 definitions.
+- `inline_script` (`trait/icon` with `ICON`, `RARITY`, `COUNCIL`, `TIER`, `CLASS`): builds the layered icon; declared by all 47 definitions.
 - `modifier`: a block of Stellaris static modifiers that the engine applies; declared by all 47 definitions.
 - `leader_potential_add`: eligibility conditions evaluated against the leader, the country, or the leader's origin context; declared by 21 definitions.
-- `leader_trait`: the leader trait pool the definition belongs to; declared by all 47 definitions.
+- `<scope>_modifier` (`planet_modifier`, `fleet_modifier`, `army_modifier`, `councilor_modifier`, `self_modifier`): declared by all 47 definitions, exactly one each.
 - `leader_class`: the leader classes the trait is offered to; declared by all 47 definitions.
 - `opposites`: identifiers excluded from the same offer; declared by 37 definitions.
-- `modification`: whether the trait may be added or removed through genetic or robotic modification; 39 definitions set `modification = no`.
+- `selectable_weight`: relative chance of being offered at level-up; declared by all 47 definitions.
 
 Identifier conventions within the area are `ui_trait_leader_*` for class-agnostic traits, and `ui_trait_admiral_*`, `ui_trait_general_*`, `ui_trait_governor_*`, and `ui_trait_ruler_*` for class-scoped traits. Icon files follow a shorter convention and are named after the trait's theme rather than its full identifier, for example `ui_trait_berserker.dds` for `ui_trait_admiral_berserker`.
 
@@ -244,7 +244,7 @@ The mod introduces no trust boundary of its own: it performs no authentication, 
 
 ### Error Handling
 
-The mod contains no error handling logic, since it contains no executable code. Failure is owned by the engine and the launcher: an unreadable or version-mismatched descriptor leaves the mod unregistered, an unparsable trait block drops that trait, an unresolvable `opposites` identifier leaves the exclusion unresolved, a missing localisation key surfaces the raw identifier, and an unresolvable icon path falls back to a default graphic. The repository's only mitigation is deliberate identifier pairing across the definition, localisation, and asset areas.
+The mod contains no error handling logic, since it contains no executable code. Failure is owned by the engine and the launcher: an unreadable or version-mismatched descriptor leaves the mod unregistered, an unparsable trait block drops that trait, an unresolvable `opposites` identifier leaves the exclusion unresolved, a missing localisation key surfaces the raw identifier, and an unresolvable sprite falls back to a default graphic. The repository's only mitigation is deliberate identifier pairing across the definition, localisation, and asset areas.
 
 ### Observability
 
@@ -277,7 +277,7 @@ The principal dependency rules are:
 - Trait definitions may depend on localisation and assets only through identifier and icon reference; localisation and assets must not be treated as the source of trait behaviour.
 - Trait identifiers must remain unique against both the mod's own identifiers and vanilla `leader_trait_*` identifiers.
 - Every trait definition must have a matching localisation name key and description key.
-- Every `icon` value must resolve either to a file in `gfx/interface/icons/traits/` or to a vanilla icon supplied by the base game.
+- Every `ICON` value must resolve either to a sprite the mod declares in `interface/ui_character_traits.gfx` or to a vanilla sprite supplied by the base game, and every mod sprite must point at a texture the mod ships.
 - `opposites` entries must reference existing trait identifiers and must not introduce cycles that would make a trait unreachable.
 - The descriptor area sits above all content areas: no content change is visible to the player unless the descriptor remains valid.
 
@@ -302,7 +302,7 @@ The mod is a static archive with no process topology, no persistent state, and n
 | Distribution channels | Steam Workshop, Paradox Mods, Nexus Mods, and GitHub Releases | Channel metadata is maintained outside the repository; the payload is identical for all channels |
 | Persistent state | None owned by the mod; playset enablement and save state belong to the game | Disabling or removing the mod affects existing saves that reference its traits |
 | Recovery | Re-extraction of the payload or platform-managed reinstallation | No rollback mechanism exists inside the repository beyond repository history |
-| Versioning | Git tags `v1.0`, `v1.0.1`, and `v1.0.2`; the descriptor declares `supported_version="3.2.*"` | Release tags and the declared supported game version evolve independently and can disagree |
+| Versioning | Git tags `v1.0`, `v1.0.1`, and `v1.0.2`; the descriptor declares `supported_version="v4.5.*"` | Release tags and the declared supported game version evolve independently and can disagree |
 
 ## 🛡️ Compatibility Contracts
 
@@ -331,7 +331,7 @@ No executable verification command or repository script exists to include here. 
 - **Single localisation language:** Only English is supplied; additional languages require new locale directories and files.
 - **Icon format lock-in:** DDS is mandatory for trait icons, with no runtime conversion.
 - **Class-scoped files with class-agnostic enforcement:** File organisation follows leader classes, but effective scope is determined solely by `leader_trait` and `leader_class` values.
-- **Declared version range:** The descriptors declare `supported_version="3.2.*"`, so behaviour on other game versions is unverified and must be re-validated manually.
+- **Declared version range:** The descriptors declare `supported_version="v4.5.*"`, so behaviour on other game versions is unverified and must be re-validated manually.
 - **No consistency enforcement:** Identifier, localisation, and icon pairing is a convention upheld by review alone, and the current content set already contains unmatched localisation keys, unreferenced icons, and missing description keys.
 - **No runtime modification:** Traits cannot be added, removed, or revised during gameplay; changes require a restart and affect save data that referenced them.
 

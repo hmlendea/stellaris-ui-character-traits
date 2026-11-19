@@ -65,7 +65,7 @@ Steps 2-5 must be repeated after every change; there is no hot reload.
 |----------------|---------------|-------|
 | Git tags | `v1.0`, `v1.0.1`, `v1.0.2` | `v1.0` tagged 2020-04-05; `v1.0.1` and `v1.0.2` tagged 2021-12-12 and 2021-12-14 |
 | GitHub releases | Three published releases: `1.0 - Initial release`, `v1.0.1`, `v1.0.2` | `v1.0.2` is the latest |
-| Descriptor `supported_version` | `3.2.*` | Independent of the release tag |
+| Descriptor `supported_version` | `v4.5.*` | Independent of the release tag |
 
 Release tags and the declared supported game version evolve independently, so they can disagree. A release tag identifies a snapshot of the mod; `supported_version` states which game version that snapshot targets.
 

@@ -44,7 +44,7 @@ Worked examples:
 
 | Trait | Condition | Withdrawal case |
 |-------|-----------|-----------------|
-| `ui_trait_general_crusader` | `FROM = { OR = { has_ethic = "ethic_spiritualist" has_ethic = "ethic_fanatic_spiritualist" } }` | Country is neither spiritualist nor fanatic spiritualist |
+| `ui_trait_general_faith_militant` | `FROM = { OR = { has_ethic = "ethic_spiritualist" has_ethic = "ethic_fanatic_spiritualist" } }` | Country is neither spiritualist nor fanatic spiritualist |
 | `ui_trait_governor_familist` | `NOT = { from = { has_authority = "auth_hive_mind" } }` | Country is a hive mind |
 | `ui_trait_governor_ideologue_militarist` | `NOT = { OR = { FROM = { has_ethic = "ethic_fanatic_pacifist" } FROM = { has_authority = "auth_hive_mind" } } }` | Country is fanatic pacifist or hive mind |
 | `ui_trait_governor_engineer` | `NOT = { from = { OR = { has_trait = "leader_trait_intellectual" has_authority = "auth_machine_intelligence" has_trait = "ui_trait_governor_physicist" has_trait = "ui_trait_governor_sociologist" } } }` | Leader has intellectual, country is machine intelligence, or leader already has physicist or sociologist |
@@ -54,7 +54,7 @@ A trait with no `leader_potential_add` block (26 of 47) passes this step uncondi
 
 ### 3. Exclusion subtraction
 
-Traits already held by the leader, plus traits listed in the candidate's `opposites`, are removed from the offer. 37 traits declare exclusions.
+Traits already held by the leader, plus traits listed in the candidate's `opposites`, are removed from the offer. 38 traits declare exclusions.
 
 Worked examples:
 
@@ -67,13 +67,16 @@ Two traits use eligibility rather than `opposites` to reach the same end: the th
 
 ### 4. Candidate presentation
 
-The surviving set is filtered by the leader-trait UI into the offer the player sees. Traits with `initial = yes` and `randomized = yes` (`ui_trait_leader_politically_connected` only) can also be assigned automatically at leader generation rather than chosen.
+The surviving set is filtered by the leader-trait UI into the offer the player sees, with each
+candidate's `selectable_weight` tuning its chance of appearing. Availability to any given
+leader is governed by `leader_class` and the subclass conditions, not by a trait pool.
 
 ### 5. Trait grant and modifier application
 
 On selection, the engine applies the trait's `modifier` block. The trait is recorded on the leader and persisted in the save.
 
-If the trait declares `modification = no` (39 of 47), it cannot subsequently be added or removed through genetic or robotic modification.
+The 4.x leader trait schema has no `modification` field, so no mod trait declares one. Genetic
+and robotic modification of leader traits is governed entirely by the base game.
 
 ## Causal dependencies worth noting
 
@@ -81,7 +84,7 @@ If the trait declares `modification = no` (39 of 47), it cannot subsequently be 
 |------------|-------------------|
 | Country ethics and authority | Determine eligibility for 20 traits |
 | Leader's existing traits | Determine eligibility for 9 `has_trait` references across 3 traits |
-| Held traits and `opposites` | Determine offer subtraction for 37 traits |
+| Held traits and `opposites` | Determine offer subtraction for 38 traits |
 | Leader class | Determines pool filter and, for one trait, eligibility |
 | Vanilla trait existence | Determines whether 14 exclusion references resolve |
 | Vanilla icon existence | Determines whether 3 icon references resolve |

@@ -1,13 +1,19 @@
 ui_trait_governor_engineer = {
-    cost = 1
-    modification = no
-    icon = "gfx/interface/icons/traits/trait_natural_engineers.dds"
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_leader_trait_engineering_focus"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
-        planet_jobs_engineering_research_produces_mult = 0.30
+    planet_modifier = {
+        planet_jobs_engineering_research_produces_mult = 0.15
     }
 
     leader_potential_add = {
+        has_paragon_dlc = no
         NOT = {
             from = {
                 OR = {
@@ -20,22 +26,32 @@ ui_trait_governor_engineer = {
         }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_naturalist" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_physicist = {
-    cost = 1
-    modification = no
-    icon = "gfx/interface/icons/traits/trait_natural_physicists.dds"
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_leader_trait_physics_focus"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
-        planet_jobs_physics_research_produces_mult = 0.30
+    planet_modifier = {
+        planet_jobs_physics_research_produces_mult = 0.15
     }
 
     leader_potential_add = {
+        has_paragon_dlc = no
         NOT = {
             from = {
                 OR = {
@@ -48,22 +64,32 @@ ui_trait_governor_physicist = {
         }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_naturalist" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_sociologist = {
-    cost = 1
-    modification = no
-    icon = "gfx/interface/icons/traits/trait_natural_sociologists.dds"
-
-    modifier = {
-        planet_jobs_society_research_produces_mult = 0.30
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_leader_trait_society_focus"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
     }
-    
+
+    planet_modifier = {
+        planet_jobs_society_research_produces_mult = 0.15
+    }
+
     leader_potential_add = {
+        has_paragon_dlc = no
         NOT = {
             from = {
                 OR = {
@@ -76,111 +102,194 @@ ui_trait_governor_sociologist = {
         }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_naturalist" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_familist = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_familist"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
-        pop_growth_speed = 0.15
+    planet_modifier = {
+        logistic_growth_mult = 0.15
     }
 
     leader_potential_add = {
         NOT = { from = { has_authority = "auth_hive_mind" } }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_war_industrialist" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_corporatist = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_corporatist"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         planet_jobs_energy_produces_mult = 0.15
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_potential_add = {
+        has_any_governor_focus = no
+    }
+
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_environmentalist" "ui_trait_governor_war_industrialist" "ui_trait_governor_consumer_industrialist" "ui_trait_governor_cultural_interest" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_miner = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_miner"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         planet_jobs_minerals_produces_mult = 0.15
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_potential_add = {
+        has_any_governor_focus = no
+    }
+
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_environmentalist" "ui_trait_governor_war_industrialist" "ui_trait_governor_consumer_industrialist" "ui_trait_governor_cultural_interest" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_populist = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_populist"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         planet_jobs_unity_produces_mult = 0.15
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_potential_add = {
+        has_any_governor_focus = no
+    }
+
+    leader_class = { official commander scientist }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_robotics_magnate = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_robotics_magnate"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
-        pop_assembly_speed = 0.1
+    planet_modifier = {
+        planet_pop_assembly_mult = 0.1
         planet_pops_robotics_upkeep_mult = -0.05
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_potential_add = {
+        has_any_governor_focus = no
+    }
+
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_ideologue_spiritualist" "ui_trait_governor_war_industrialist" "ui_trait_governor_consumer_industrialist" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_environmentalist = {
-    cost = 1
-    modification = no
-
-    modifier = {
-        planet_pops_consumer_goods_upkeep_mult = -0.15
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_environmentalist"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    planet_modifier = {
+        planet_pops_consumer_goods_upkeep_mult = -0.10
+    }
+
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_corporatist" "ui_trait_governor_miner" "ui_trait_governor_war_industrialist" "ui_trait_governor_consumer_industrialist" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_moral_authority = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_moral_authority"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         planet_jobs_unity_produces_mult = 0.05
         planet_stability_add = 5
         pop_happiness = 0.05
     }
-
-    leader_trait = { governor }
-    leader_class = { governor }
 
     leader_potential_add = {
         NOT = {
@@ -193,18 +302,31 @@ ui_trait_governor_moral_authority = {
         }
     }
 
+    leader_class = { official commander scientist }
+
     opposites = { "ui_trait_governor_ideologue_authoritarian" "ui_trait_governor_vicious_rumours" "ui_trait_governor_deal_with_the_devil" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_ideologue_militarist = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_ideologue_militarist"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         pop_ethic_militarist_attraction_mult = 0.25
         pop_ethic_pacifist_attraction_mult = -0.25
     }
-    
+
     leader_potential_add = {
         NOT = {
             OR = {
@@ -214,17 +336,27 @@ ui_trait_governor_ideologue_militarist = {
         }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_ideologue_pacifist"  }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_ideologue_pacifist = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_ideologue_pacifist"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         pop_ethic_pacifist_attraction_mult = 0.25
         pop_ethic_militarist_attraction_mult = -0.25
     }
@@ -238,21 +370,31 @@ ui_trait_governor_ideologue_pacifist = {
         }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_ideologue_militarist" "ui_trait_governor_war_industrialist"  }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_ideologue_xenophobe = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_ideologue_xenophobe"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         pop_ethic_xenophobe_attraction_mult = 0.25
         pop_ethic_xenophile_attraction_mult = -0.25
     }
-    
+
     leader_potential_add = {
         NOT = {
             OR = {
@@ -262,17 +404,27 @@ ui_trait_governor_ideologue_xenophobe = {
         }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_open_armed" "ui_trait_governor_ideologue_xenophile"  }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_ideologue_xenophile = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_ideologue_xenophile"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         pop_ethic_xenophile_attraction_mult = 0.25
         pop_ethic_xenophobe_attraction_mult = -0.25
     }
@@ -286,17 +438,27 @@ ui_trait_governor_ideologue_xenophile = {
         }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_open_armed" "ui_trait_governor_ideologue_xenophobe"  }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_ideologue_egalitarian = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_ideologue_egalitarian"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         pop_ethic_egalitarian_attraction_mult = 0.25
         pop_ethic_authoritarian_attraction_mult = -0.25
     }
@@ -310,17 +472,27 @@ ui_trait_governor_ideologue_egalitarian = {
         }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_moral_authority" "ui_trait_governor_ideologue_authoritarian" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_ideologue_authoritarian = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_ideologue_authoritarian"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         pop_ethic_authoritarian_attraction_mult = 0.25
         pop_ethic_egalitarian_attraction_mult = -0.25
     }
@@ -334,17 +506,27 @@ ui_trait_governor_ideologue_authoritarian = {
         }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_moral_authority" "ui_trait_governor_ideologue_egalitarian" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_ideologue_materialist = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_ideologue_materialist"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         pop_ethic_materialist_attraction_mult = 0.25
         pop_ethic_spiritualist_attraction_mult = -0.25
     }
@@ -358,17 +540,27 @@ ui_trait_governor_ideologue_materialist = {
         }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_ideologue_spiritualist"  }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_ideologue_spiritualist = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_ideologue_spiritualist"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         pop_ethic_spiritualist_attraction_mult = 0.25
         pop_ethic_materialist_attraction_mult = -0.25
     }
@@ -382,18 +574,28 @@ ui_trait_governor_ideologue_spiritualist = {
         }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_robotics_magnate" "ui_trait_governor_ideologue_materialist" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_war_industrialist = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_war_industrialist"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
-        planet_jobs_alloys_produces_mult = 0.1
+    planet_modifier = {
+        planet_jobs_alloys_produces_mult = 0.10
     }
 
     leader_potential_add = {
@@ -404,94 +606,156 @@ ui_trait_governor_war_industrialist = {
         }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
-    opposites = { "ui_trait_governor_ideologue_pacifist" "ui_trait_governor_corporatist" "ui_trait_governor_miner" "ui_trait_governor_environmentalist" ui_trait_governor_consumer_industrialist "ui_trait_governor_familist" "ui_trait_governor_robotics_magnate" }
+    opposites = { "ui_trait_governor_ideologue_pacifist" "ui_trait_governor_corporatist" "ui_trait_governor_miner" "ui_trait_governor_environmentalist" "ui_trait_governor_consumer_industrialist" "ui_trait_governor_familist" "ui_trait_governor_robotics_magnate" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_consumer_industrialist = {
-    cost = 1
-    modification = no
-
-    modifier = {
-        planet_jobs_consumer_goods_produces_mult = 0.1
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_consumer_industrialist"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    planet_modifier = {
+        planet_jobs_consumer_goods_produces_mult = 0.10
+    }
+
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_corporatist" "ui_trait_governor_miner" "ui_trait_governor_environmentalist" "ui_trait_governor_war_industrialist" "ui_trait_governor_familist" "ui_trait_governor_robotics_magnate" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_racist = {
-    cost = 1
-    modification = no
-
-    modifier = {
-        planet_immigration_pull_mult = -0.4
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_racist"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    planet_modifier = {
+        pop_ethic_xenophile_attraction_mult = -0.4
+        pop_ethic_xenophobe_attraction_mult = 0.1
+    }
+
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_ideologue_xenophile" "ui_trait_governor_ideologue_pacifist" "ui_trait_governor_open_armed" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_open_armed = {
-    cost = 1
-    modification = no
-
-    modifier = {
-        planet_immigration_pull_mult = 0.4
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_open_armed"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    planet_modifier = {
+        pop_ethic_xenophile_attraction_mult = 0.4
+        pop_ethic_xenophobe_attraction_mult = -0.1
+    }
+
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_ideologue_xenophobe" "ui_trait_governor_racist" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_vicious_rumours = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_vicious_rumours"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         planet_jobs_unity_produces_mult = -0.05
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "leader_trait_righteous" "ui_trait_governor_moral_authority" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_deal_with_the_devil = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_deal_with_the_devil"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         planet_jobs_energy_produces_mult = 0.25
         planet_crime_add = 25
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "leader_trait_righteous" "ui_trait_governor_moral_authority" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_questionable_ethics = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_questionable_ethics"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
-        planet_jobs_engineering_research_produces_mult = 0.05
-        planet_jobs_physics_research_produces_mult = 0.05
-        planet_jobs_society_research_produces_mult = 0.05
+    planet_modifier = {
+        planet_jobs_engineering_research_produces_mult = 0.075
+        planet_jobs_physics_research_produces_mult = 0.075
+        planet_jobs_society_research_produces_mult = 0.075
         planet_stability_add = -2.5
         pop_happiness = -0.05
-        pop_growth_speed = -0.01
+        logistic_growth_mult = -0.01
     }
 
     leader_potential_add = {
@@ -503,151 +767,253 @@ ui_trait_governor_questionable_ethics = {
         }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "leader_trait_righteous" "ui_trait_governor_moral_authority" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_naturalist = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_naturalist"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         planet_jobs_engineering_research_produces_mult = -0.05
         planet_jobs_physics_research_produces_mult = -0.05
         planet_jobs_society_research_produces_mult = -0.05
         planet_stability_add = 2.5
         pop_happiness = 0.05
-        pop_growth_speed = 0.01
+        logistic_growth_mult = 0.01
     }
 
     leader_potential_add = {
         NOT = { from = { has_authority = "auth_machine_intelligence" } }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
-    opposites = { "leader_trait_intellectual" "leader_trait_governor_erudite" "ui_trait_governor_engineer" "ui_trait_governor_physicist" "ui_trait_governor_sociologist" "ui_trait_governor_questionable_ethics" }
+    opposites = { "leader_trait_intellectual" "ui_trait_governor_engineer" "ui_trait_governor_physicist" "ui_trait_governor_sociologist" "ui_trait_governor_questionable_ethics" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_guns_legaliser = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_guns_legaliser"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         army_defense_damage_mult = 0.25
         planet_army_build_speed_mult = 0.1
         planet_stability_add = -5
         planet_crime_add = 5
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_guns_prohibitor" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_guns_prohibitor = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_guns_prohibitor"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         army_defense_damage_mult = -0.25
         planet_army_build_speed_mult = -0.1
         planet_stability_add = 5
         planet_crime_add = -5
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
 
     opposites = { "ui_trait_governor_guns_legaliser" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_cultural_interest = {
-    cost = 1
-    modification = no
-
-    modifier = {
-        planet_amenities_mult = 0.10
-        planet_culture_workers_produces_mult = 0.10
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_cultural_interest"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    planet_modifier = {
+        planet_amenities_mult = 0.10
+        planet_jobs_unity_produces_mult = 0.10
+    }
 
-    opposites = { "leader_trait_architectural_interest" "ui_trait_governor_corporatist" "ui_trait_governor_miner" }
+    leader_potential_add = {
+        has_any_governor_focus = no
+    }
+
+    leader_class = { official commander scientist }
+
+    opposites = { "ui_trait_governor_corporatist" "ui_trait_governor_miner" "ui_trait_governor_war_industrialist" "ui_trait_governor_consumer_industrialist" }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_fortifier = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_fortifier"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         planet_building_stronghold_build_speed_mult = 0.40
         army_defense_damage_mult = 0.25
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_settler = {
-    cost = 1
-    modification = no
-
-    modifier = {
-        planet_district_city_build_speed_mult = 0.40
-        planet_colony_development_speed_mult = 0.25
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_settler"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    planet_modifier = {
+        planet_district_city_build_speed_mult = 0.40
+        logistic_growth_mult = 0.25
+    }
+
+    leader_potential_add = {
+        has_any_governor_focus = no
+    }
+
+    leader_class = { official commander scientist }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
-ui_trait_governor_chemist  = {
-    cost = 1
-    modification = no
+ui_trait_governor_chemist = {
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_chemist"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
-        planet_building_chemical_plant_build_speed_mult = 0.40
+    planet_modifier = {
+        planet_building_build_speed_mult = 0.25
         planet_chemists_produces_mult = 0.15
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
-ui_trait_governor_metallurgist  = {
-    cost = 1
-    modification = no
+ui_trait_governor_metallurgist = {
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_metallurgist"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
-        planet_building_foundry_1_build_speed_mult = 0.40
+    planet_modifier = {
+        planet_building_build_speed_mult = 0.25
         planet_metallurgists_produces_mult = 0.15
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }
 
 ui_trait_governor_green_energy_advocate = {
-    cost = 1
-    modification = no
+    inline_script = {
+        script = trait/icon
+        CLASS = official
+        ICON = "GFX_ui_trait_governor_green_energy_advocate"
+        RARITY = common
+        COUNCIL = no
+        TIER = 1
+    }
 
-    modifier = {
+    planet_modifier = {
         planet_district_generator_build_speed_mult = -0.33
         planet_pops_consumer_goods_upkeep_mult = -0.10
     }
-    
+
     leader_potential_add = {
         NOT = {
             FROM = { has_ethic = "ethic_fanatic_materialist" }
         }
     }
 
-    leader_trait = { governor }
-    leader_class = { governor }
+    leader_class = { official commander scientist }
+
+    selectable_weight = {
+        weight = @shared_trait_weight
+        inline_script = paragon/governor_weight_mult
+    }
 }

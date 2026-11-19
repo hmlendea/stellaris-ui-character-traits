@@ -2,7 +2,7 @@
 
 ## What does this mod do?
 
-It adds 47 leader traits to Stellaris for the admiral, general, governor, and ruler leader classes. Names include Berserker, Guerillero, Glass Cannon, Sniper, Stormer, Testudo, Crusader, Corporatist, Environmentalist, Moral Authority, Naturalist, Racist, Open-armed, Peacebringer, Fascist Demagogue, Antique Collector, and Efficient Bureaucrat, among others. See the [trait catalogue](./components/trait-catalogue.md) for the complete list.
+It adds 47 leader traits to Stellaris, mapped onto the 4.x leader model: fleet commanders, army commanders, governors, and councilors. Names include Berserker, Guerillero, Glass Cannon, Sniper, Stormer, Testudo, Crusader, Corporatist, Environmentalist, Moral Authority, Naturalist, Racist, Open-armed, Peacebringer, Fascist Demagogue, Antique Collector, and Efficient Bureaucrat, among others. See the [trait catalogue](./components/trait-catalogue.md) for the complete list.
 
 ## Does the mod require a new game?
 
@@ -18,13 +18,13 @@ The mod is content-only, with no executable code and no platform-specific paths,
 
 ## Which game version is supported?
 
-`3.2.*`, declared in both descriptor files. Behaviour on other versions is unverified.
+`v4.5.*`, declared in both descriptor files. Behaviour on other versions is unverified.
 
 ## Why are some traits not appearing?
 
 Three reasons, in order of likelihood:
 
-1. **Scope** — the trait is not scoped to that leader class. For example, `ui_trait_general_crusader` only appears for generals.
+1. **Scope** — the trait is not scoped to that leader class. For example, `ui_trait_admiral_berserker` appears only for `commander` leaders on the admiral subclass.
 2. **Eligibility** — a condition is not met. Most governor traits exclude hive-mind empires, for example.
 3. **Exclusions** — the leader already holds a trait listed in the candidate's `opposites`.
 
@@ -32,7 +32,10 @@ See [Eligibility and exclusions](./behaviour/eligibility-and-exclusions.md).
 
 ## Why does a trait have no description?
 
-A known localisation defect: `ui_trait_governor_consumer_industrialist` and `ui_trait_governor_war_industrialist` have misspelled description keys (`idsustrialist`). The keys never bind, so no description is shown. See [Open questions](./ambiguities-and-open-questions.md).
+All 47 traits now have correctly spelled description keys. The two previously misspelled
+`idsustrialist` keys were corrected during the 4.5 update. One orphaned key pair remains
+(`ui_trait_governor_securist`) for a trait that was never defined; see
+[Open questions](./ambiguities-and-open-questions.md).
 
 ## Why does a trait have no icon?
 
@@ -52,11 +55,13 @@ No. Identifiers are effectively immutable because localisation keys, `opposites`
 
 ## Why can't I modify some traits?
 
-Traits that declare `modification = no` — all 34 governor traits and all 5 ruler traits — cannot be added or removed through genetic or robotic modification. This is intentional.
+They no longer can, and this is a 4.x change rather than a mod setting. The mod previously declared `modification = no` on governor and ruler traits; that field no longer exists in the 4.x leader trait schema, so it was removed.
 
 ## Do the traits have the same cost as vanilla traits?
 
-All 47 mod traits declare `cost = 1`. Vanilla costs vary, so mod traits may be cheaper or more expensive than their vanilla counterparts.
+The 4.x leader trait schema has no `cost` field, so mod traits are weighted by
+`selectable_weight` instead. They reuse the base game's own weight variables and inline
+scripts, so they are offered at the same tier as the vanilla traits they sit beside.
 
 ## Does the mod collect any data?
 

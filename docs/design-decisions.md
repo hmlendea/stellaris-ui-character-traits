@@ -24,7 +24,7 @@ Rationale reconstructed from repository evidence. Where a decision's reasoning i
 
 ## Files split by leader class
 
-**Decision.** Trait definitions are split into a file per leader class, plus one file for the class-agnostic trait.
+**Decision.** Trait definitions are split into a file per legacy leader class, plus one file for the class-agnostic trait.
 
 **Evidence.** `ui-traits_leader.txt`, `_admiral.txt`, `_general.txt`, `_governor.txt`, `_ruler.txt`.
 
@@ -54,9 +54,10 @@ Rationale reconstructed from repository evidence. Where a decision's reasoning i
 
 ## Every trait costs the same
 
-**Decision.** All 47 traits declare `cost = 1`.
+**Decision.** In the pre-4.x corpus all 47 traits declared `cost = 1`. That field has been
+removed, because it does not exist in the 4.x leader trait schema.
 
-**Evidence.** Every trait block contains `cost = 1`.
+**Evidence.** No trait block contains a `cost` field.
 
 **Rationale (inferred).** A uniform cost lets the traits compete on effect and exclusion rather than on selection economy, and keeps the traits comparable to each other. The reasoning is not recorded.
 
@@ -86,7 +87,9 @@ Rationale reconstructed from repository evidence. Where a decision's reasoning i
 
 **Decision.** Exactly one trait, `ui_trait_leader_politically_connected`, sits in the `all` pool and reaches four leader classes.
 
-**Evidence.** It is the only trait with `leader_trait = all`, the only trait with a multi-class `leader_class` list, and the only trait with `initial` and `randomized`.
+**Evidence.** It is the only trait available to all three leader classes, the only one that
+excludes the ruler through an `is_ruler = no` condition rather than a class list, and the only
+one that uses a `self_modifier`.
 
 **Rationale (inferred).** The trait's effect (`leaders_cost_mult = -0.8` with `species_leader_exp_gain = -0.25`) is conceptually leader-generic rather than class-specific, so it is offered wherever a leader can be recruited. Its eligibility block excludes rulers and gestalt consciousnesses to keep the design coherent.
 
@@ -106,7 +109,7 @@ Rationale reconstructed from repository evidence. Where a decision's reasoning i
 
 **Decision.** `ui_trait_governor_engineer`, `_physicist`, and `_sociologist` reference vanilla icon paths instead of shipping DDS files.
 
-**Evidence.** Their `icon` values point to `trait_natural_engineers.dds`, `trait_natural_physicists.dds`, and `trait_natural_sociologists.dds`, none of which are in the repository.
+**Evidence.** Their `ICON` values point to `GFX_leader_trait_engineering_focus`, `GFX_leader_trait_physics_focus` and `GFX_leader_trait_society_focus`, which are vanilla sprites rather than textures shipped in this repository.
 
 **Rationale (explicit, from the localisation text).** These traits are modelled directly on the vanilla `leader_trait_intellectual` family; their descriptions present them as renowned researchers of a specific field, mirroring the vanilla natural-engineers/physicists/sociologists traits. Reusing that art is therefore consistent.
 

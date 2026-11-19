@@ -4,8 +4,8 @@
 
 | Integration | Direction | Compatibility | Purpose | Required | Owner |
 |-------------|-----------|---------------|---------|----------|-------|
-| Stellaris launcher | Inbound | Stellaris 3.2.x | Registers the mod, validates `supported_version`, shows it in the playset | Required | External |
-| Stellaris game engine | Inbound | Stellaris 3.2.x | Parses, resolves, and renders all mod content | Required | External |
+| Stellaris launcher | Inbound | Stellaris 4.5.x | Registers the mod, validates `supported_version`, shows it in the playset | Required | External |
+| Stellaris game engine | Inbound | Stellaris 4.5.x | Parses, resolves, and renders all mod content | Required | External |
 | Steam Workshop | Inbound delivery | Platform-managed | Distributes the mod (item 2048878128) | One channel required | External |
 | Paradox Mods | Inbound delivery | Platform-managed | Distributes the mod (mod 34606) | One channel required | External |
 | Nexus Mods | Inbound delivery | Platform-managed | Distributes the mod (mod 90) | One channel required | External |

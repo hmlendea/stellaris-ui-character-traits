@@ -21,7 +21,7 @@ path="mod/ui-character-traits"
 tags={
     "Characters"
 }
-supported_version="3.2.*"
+supported_version="v4.5.*"
 ```
 
 ## Field semantics
@@ -31,7 +31,7 @@ supported_version="3.2.*"
 | `name` | `Universum Infinitum - Character Traits` | Launcher, distribution listings | Display name in the playset interface and on store pages |
 | `path` | `mod/ui-character-traits` | Launcher | Resolves the mod body. The final segment must match the payload directory name |
 | `tags` | `Characters` | Launcher | Categorisation in the launcher's mod browser |
-| `supported_version` | `3.2.*` | Launcher | Compatibility gate. A mismatch marks the mod incompatible |
+| `supported_version` | `v4.5.*` | Launcher | Compatibility gate. A mismatch marks the mod incompatible |
 
 ## Why two descriptors exist
 

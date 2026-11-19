@@ -37,7 +37,7 @@ No Stellaris installation path or log directory is declared in this repository; 
 | Symptom you can observe | Which surface reports it | What to conclude |
 |-------------------------|--------------------------|------------------|
 | Mod absent from the playset | Launcher mod list | Descriptor unreadable or `path` unresolvable |
-| Mod marked incompatible | Launcher mod list | `supported_version="3.2.*"` does not match the installed game |
+| Mod marked incompatible | Launcher mod list | `supported_version="v4.5.*"` does not match the installed game |
 | Raw `ui_trait_*` string shown as a trait name | In-game tooltip; error log | Missing localisation name key |
 | Trait shows a name but no description | In-game tooltip | Missing or misspelled `_desc` key |
 | Generic or placeholder trait icon | In-game interface | Unresolvable `icon` path |

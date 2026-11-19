@@ -38,17 +38,15 @@ The mod reads base-game content by reference. Unlike declared dependencies these
 | `leader_trait_scout` | `opposites` | `ui_trait_admiral_berserker`, `ui_trait_admiral_guerillero` |
 | `leader_trait_nervous` | `opposites` | `ui_trait_admiral_berserker`, `ui_trait_admiral_guerillero` |
 | `leader_trait_intellectual` | `opposites` and `has_trait` | `ui_trait_governor_naturalist`; `ui_trait_governor_engineer`, `_physicist`, `_sociologist` |
-| `leader_trait_governor_erudite` | `opposites` | `ui_trait_governor_naturalist` |
 | `leader_trait_eager` | `opposites` | `ui_trait_leader_politically_connected` |
-| `leader_trait_architectural_interest` | `opposites` | `ui_trait_governor_cultural_interest` |
 
 ### Referenced vanilla icon assets (3)
 
 | Path | Consumer |
 |------|----------|
-| `gfx/interface/icons/traits/trait_natural_engineers.dds` | `ui_trait_governor_engineer` |
-| `gfx/interface/icons/traits/trait_natural_physicists.dds` | `ui_trait_governor_physicist` |
-| `gfx/interface/icons/traits/trait_natural_sociologists.dds` | `ui_trait_governor_sociologist` |
+| `GFX_leader_trait_engineering_focus` | `ui_trait_governor_engineer` |
+| `GFX_leader_trait_physics_focus` | `ui_trait_governor_physicist` |
+| `GFX_leader_trait_society_focus` | `ui_trait_governor_sociologist` |
 
 ### Referenced vanilla authorities and ethics
 

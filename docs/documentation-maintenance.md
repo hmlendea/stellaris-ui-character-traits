@@ -77,7 +77,7 @@ Three statements in the root `ARCHITECTURE.md` do not match direct content analy
 
 | Statement | Verified value | Detail |
 |-----------|----------------|--------|
-| 34 of 45 shipped icons are unreferenced | 37 unreferenced | The root document appears to count the 3 vanilla icon references as shipped icons |
+| Older counts of unreferenced shipped icons | 1 unreferenced (`ui_trait_governor_securist.dds`); 44 are live via mod sprites | Superseded by the 4.5 sprite-definition model |
 | 3 localisation entries have no matching trait definition | 4 orphaned entries (1 name key, 3 description keys) | Counting basis differs |
 | 8 traits omit both `opposites` and `modification`, 5 of which declare `initial`/`randomized` | 1 and 1 respectively | Unsupported by content |
 

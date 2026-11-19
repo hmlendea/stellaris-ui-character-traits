@@ -5,16 +5,16 @@
 The only compatibility statement in the repository is the descriptor field:
 
 ```text
-supported_version="3.2.*"
+supported_version="v4.5.*"
 ```
 
-The launcher uses it to decide whether the mod is compatible with the installed game version. The `3.2.*` pattern accepts any 3.2.x patch release.
+The launcher uses it to decide whether the mod is compatible with the installed game version. The `v4.5.*` pattern accepts any 4.5.x patch release. The leading `v` is required; the launcher compares the declared string against the game's own `rawVersion`, which is published as `v4.5.4`.
 
 ## Compatibility matrix
 
 | Boundary | Supported | Evidence | Notes |
 |----------|-----------|----------|-------|
-| Stellaris game version | `3.2.*` | Both descriptors | Behaviour on any other version is unverified |
+| Stellaris game version | `v4.5.*` | Both descriptors | Behaviour on any other version is unverified |
 | Operating system | All operating systems supported by the game | `README.md` compatibility section | The mod is content-only; no platform-specific code or paths exist. Actively tested on Linux, including via Steam Play. |
 | Steam Workshop distribution | Supported | `README.md` badges, `SECURITY.md` supported-version table | |
 | Paradox Mods distribution | Supported | `README.md` badges, `SECURITY.md` supported-version table | |
@@ -26,7 +26,8 @@ The launcher uses it to decide whether the mod is compatible with the installed 
 
 ## Version-coupled dependencies
 
-The mod reads eight vanilla trait identifiers and three vanilla icon paths. Each is a coupling to a specific game version.
+The mod reads eight vanilla trait identifiers, three vanilla sprites and a set of vanilla
+engine tokens. Each is a coupling to a specific game version.
 
 | Vanilla identifier | Referenced by | Kind |
 |--------------------|---------------|------|
@@ -35,15 +36,23 @@ The mod reads eight vanilla trait identifiers and three vanilla icon paths. Each
 | `leader_trait_scout` | 2 admiral traits | Exclusion |
 | `leader_trait_nervous` | 2 admiral traits | Exclusion |
 | `leader_trait_intellectual` | `ui_trait_governor_naturalist` (exclusion) and 3 research traits (eligibility) | Exclusion and eligibility |
-| `leader_trait_governor_erudite` | `ui_trait_governor_naturalist` | Exclusion |
 | `leader_trait_eager` | `ui_trait_leader_politically_connected` | Exclusion |
-| `leader_trait_architectural_interest` | `ui_trait_governor_cultural_interest` | Exclusion |
+| `leader_trait_crusader`, `leader_trait_crusader_2` | `ui_trait_general_faith_militant` | Exclusion |
 
-| Vanilla icon path | Referenced by |
-|-------------------|---------------|
-| `gfx/interface/icons/traits/trait_natural_engineers.dds` | `ui_trait_governor_engineer` |
-| `gfx/interface/icons/traits/trait_natural_physicists.dds` | `ui_trait_governor_physicist` |
-| `gfx/interface/icons/traits/trait_natural_sociologists.dds` | `ui_trait_governor_sociologist` |
+| Vanilla sprite | Referenced by |
+|----------------|---------------|
+| `GFX_leader_trait_engineering_focus` | `ui_trait_governor_engineer` |
+| `GFX_leader_trait_physics_focus` | `ui_trait_governor_physicist` |
+| `GFX_leader_trait_society_focus` | `ui_trait_governor_sociologist` |
+
+| Vanilla engine token | Referenced by | Kind |
+|----------------------|---------------|------|
+| `commander`, `official`, `scientist` | all 47 traits | Leader class |
+| `subclass_commander_admiral`, `subclass_commander_general` | 7 traits | Subclass gating |
+| `has_paragon_dlc` | 7 traits | DLC gating |
+| `has_council_subclass`, `is_ruler` | 6 traits | Ruler/councilor gating |
+| `has_any_governor_focus` | 6 traits | Vanilla focus exclusion |
+| `trait/icon`, `paragon/*_weight_mult` | all 47 traits | Vanilla inline scripts |
 
 The mod also references vanilla authorities and ethics in eligibility conditions: `auth_hive_mind` (13 references), `auth_machine_intelligence` (5), and ten distinct ethic identifiers including `ethic_gestalt_consciousness`. If any of these is renamed or removed in a game update, the affected condition becomes inert or the trait becomes unreachable.
 
@@ -54,7 +63,7 @@ The mod also references vanilla authorities and ethics in eligibility conditions
 | A trait identifier in `opposites` | Exclusion is inert; the two traits can coexist |
 | A trait identifier in `has_trait` | Condition cannot match; trait availability changes |
 | An authority or ethic identifier | Condition cannot match; gating silently disappears |
-| An icon path | Icon falls back to a default graphic |
+| A sprite or icon path | Icon falls back to a default graphic |
 
 None of these produce a hard mod failure. They degrade silently, which is why re-verification is required on every supported-version change.
 
