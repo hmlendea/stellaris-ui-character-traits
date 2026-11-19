@@ -9,6 +9,7 @@ stellaris-ui-character-traits/
 │   ├── FUNDING.yml                     # Sponsorship configuration
 │   └── workflows/
 │       ├── github-release.yml          # Release archive build and upload
+│       ├── nexus-mods-release.yml      # Nexus Mods release upload
 │       └── steam-workshop-release.yml  # Steam Workshop release upload
 ├── .gitignore                          # Ignores **/*.zip (packaged release archives)
 ├── ARCHITECTURE.md                     # Root architecture document
@@ -70,7 +71,7 @@ The files inside `common/traits/` are new, mod-namespaced files. Because Stellar
 
 | Absent artefact | Consequence |
 |-----------------|-------------|
-| Validation or test workflow | No automated validation; `.github/workflows/github-release.yml` and `.github/workflows/steam-workshop-release.yml` package and publish releases and check nothing |
+| Validation or test workflow | No automated validation; `.github/workflows/github-release.yml`, `.github/workflows/nexus-mods-release.yml`, and `.github/workflows/steam-workshop-release.yml` package and publish releases and check nothing |
 | Build or packaging scripts | Release archives are built by the workflows from the tagged content, negating a local packaging step |
 | Test directories or harnesses | No automated verification of content consistency |
 | `ROADMAP.md`, `CHANGELOG.md`, `SUPPORT.md`, `FAQ.md` | Those README conditions are unmet |

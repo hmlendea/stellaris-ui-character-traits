@@ -8,7 +8,7 @@
 | Stellaris game engine | Inbound | Stellaris 4.5.x | Parses, resolves, and renders all mod content | Required | External |
 | Steam Workshop | Inbound delivery | Platform-managed | Distributes the mod (item 2048878128); published by `.github/workflows/steam-workshop-release.yml` on a `v*.*.*` tag push or manual dispatch | One channel required | External |
 | Paradox Mods | Inbound delivery | Platform-managed | Distributes the mod (mod 34606) | One channel required | External |
-| Nexus Mods | Inbound delivery | Platform-managed | Distributes the mod (mod 90) | One channel required | External |
+| Nexus Mods | Inbound delivery | Platform-managed | Distributes the mod (mod 90, file 955051); published by `.github/workflows/nexus-mods-release.yml` on a `v*.*.*` tag push or manual dispatch | One channel required | External |
 | GitHub Releases | Inbound delivery | Platform-managed | Distributes release archives | One channel required | External |
 | Base-game content | Outbound reference | Version-coupled | Supplies 8 vanilla trait identifiers, 3 vanilla icon paths, and vanilla authority and ethic identifiers the mod reads | Required for the traits that reference them | External |
 
@@ -52,7 +52,7 @@ The mod initiates no outbound interaction at any point. Every integration is con
 |----------|------------------------------|----------------------------------|
 | Steam Workshop | The payload and the descriptor | Item listing, description, tags, screenshots, version notes; uploaded by `.github/workflows/steam-workshop-release.yml` |
 | Paradox Mods | The payload and the descriptor | Listing metadata |
-| Nexus Mods | The payload and the descriptor | Listing metadata |
+| Nexus Mods | The payload and the descriptor | Listing metadata; uploaded by `.github/workflows/nexus-mods-release.yml` |
 | GitHub Releases | The payload, the descriptor, Git tags, and the release archive built by `.github/workflows/github-release.yml` | Release notes beyond the tag annotation |
 
 No platform-specific code, path, or behaviour exists in the mod. The same payload serves every channel.

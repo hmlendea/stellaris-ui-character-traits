@@ -24,7 +24,7 @@ The mod nonetheless depends on external components to function. These are not de
 | Localisation parser | Reads the YAML localisation file | `localisation/english/ui-traits_l_english.yml` | Missing or malformed key bindings |
 | DDS image loader | Loads trait icons | `gfx/interface/icons/traits/` | Unresolvable icon falls back to a default graphic |
 | Distribution platform clients | Deliver the packaged mod | Steam, Paradox Mods, Nexus Mods, GitHub | No installation route |
-| GitHub Actions runner | Builds the release archive from the tagged content and attaches it to the GitHub release, and publishes the tagged content to Steam Workshop | `.github/workflows/github-release.yml`, `softprops/action-gh-release@v2`, automatic `GITHUB_TOKEN`; `.github/workflows/steam-workshop-release.yml`, `hmlendea/steam-workshop-update@latest`, Steam secrets | No release asset is attached to a published release, or the Workshop item is left behind |
+| GitHub Actions runner | Builds the release archive from the tagged content and attaches it to the GitHub release, and publishes the tagged content to Steam Workshop and Nexus Mods | `.github/workflows/github-release.yml`, `softprops/action-gh-release@v2`, automatic `GITHUB_TOKEN`; `.github/workflows/steam-workshop-release.yml`, `hmlendea/steam-workshop-update@latest`, Steam secrets; `.github/workflows/nexus-mods-release.yml`, `Nexus-Mods/upload-action@v1.0.0-beta.11`, `NEXUSMODS_API_KEY` secret | No release asset is attached to a published release, or the Workshop item or Nexus Mods file is left behind |
 
 ## Vanilla content dependencies
 

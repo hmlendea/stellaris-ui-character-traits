@@ -93,7 +93,7 @@ These are recorded in [Ambiguities and open questions](./ambiguities-and-open-qu
 | Descriptors | Complete |
 | Root documents | Referenced, not duplicated |
 | Engine behaviour | Described from the mod side; engine-internal semantics marked unverifiable |
-| Build, test, CI | Build and validation documented as absent; `.github/workflows/github-release.yml` and `.github/workflows/steam-workshop-release.yml` documented as release publication only |
+| Build, test, CI | Build and validation documented as absent; `.github/workflows/github-release.yml`, `.github/workflows/nexus-mods-release.yml`, and `.github/workflows/steam-workshop-release.yml` documented as release publication only |
 
 ## Related documents
 

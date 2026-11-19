@@ -11,7 +11,7 @@ There is nothing to build. The repository ships source content directly: the fil
 | Packaging script | Absent |
 | Asset generation or conversion | Absent; DDS and PNG assets are committed as-is |
 | Dependency restoration | Absent; no dependencies |
-| Continuous integration | Release publication only; `.github/workflows/github-release.yml` attaches the GitHub release archive and `.github/workflows/steam-workshop-release.yml` publishes to Steam Workshop |
+| Continuous integration | Release publication only; `.github/workflows/github-release.yml` attaches the GitHub release archive, and `.github/workflows/steam-workshop-release.yml` and `.github/workflows/nexus-mods-release.yml` publish to Steam Workshop and Nexus Mods |
 
 ## Deployment unit
 
@@ -35,7 +35,7 @@ ui-character-traits/             (payload directory)
 |-------|-----------|-------|
 | Steam Workshop | Mod subscription and launcher sync | Item `2048878128`; `.github/workflows/steam-workshop-release.yml` publishes the tagged content automatically on a `v*.*.*` tag push or manual dispatch |
 | Paradox Mods | Mod subscription and launcher sync | Channel metadata maintained outside the repository |
-| Nexus Mods | Manual download and extraction | Channel metadata maintained outside the repository |
+| Nexus Mods | Mod subscription and launcher sync | Listing `90`, file `955051`; `.github/workflows/nexus-mods-release.yml` publishes the tagged content automatically on a `v*.*.*` tag push or manual dispatch |
 | GitHub Releases | Release archive download and manual extraction | Tags `v1.0`, `v1.0.1`, `v1.0.2` published; `.github/workflows/github-release.yml` builds `ui-character-traits_<version>.zip` from the published tag and attaches it |
 | Local mod directory | Manual copy of descriptor and payload | Used for development verification |
 
@@ -75,11 +75,13 @@ Release tags and the declared supported game version evolve independently, so th
 
 `.github/workflows/steam-workshop-release.yml` automates the Steam Workshop side on a `v*.*.*` tag push or a manual dispatch with a `tag` input: it checks out the tag, strips the leading `v` to derive the version, writes that version into `version` in both descriptors, zips and extracts `ui-character-traits/` and `ui-character-traits.mod`, and uploads `release/ui-character-traits/` to Workshop item `2048878128` with a changenote linking the matching release tag. It requires the `STEAM_USERNAME`, `STEAM_PASSWORD`, and `STEAM_2FA_SEED` secrets.
 
-Paradox Mods and Nexus Mods remain manual maintainer actions. To publish:
+`.github/workflows/nexus-mods-release.yml` automates the Nexus Mods side on a `v*.*.*` tag push or a manual dispatch with a `tag` input: it checks out the tag, strips the leading `v` to derive the version, writes that version into `version` in both descriptors, zips `ui-character-traits/` and `ui-character-traits.mod` into `release.zip`, and uploads it to Nexus Mods file `955051` as `ui-character-traits.zip` with a changelog link to the matching release. It requires the `NEXUSMODS_API_KEY` secret.
+
+Paradox Mods remains a manual maintainer action. To publish:
 
 1. Update both descriptors' `supported_version` if targeting a new game-version family.
-2. Tag the revision; `.github/workflows/steam-workshop-release.yml` publishes the tag to Steam Workshop, and publishing the GitHub release makes `.github/workflows/github-release.yml` write the version into both descriptors, build the archive, and attach it.
-3. Upload the same content set manually to Paradox Mods and Nexus Mods so that no channel drifts.
+2. Tag the revision; `.github/workflows/steam-workshop-release.yml` and `.github/workflows/nexus-mods-release.yml` publish the tag to Steam Workshop and Nexus Mods, and publishing the GitHub release makes `.github/workflows/github-release.yml` write the version into both descriptors, build the archive, and attach it.
+3. Upload the same content set manually to Paradox Mods so that no channel drifts.
 
 The presence of `.gitignore`'s `**/*.zip` rule indicates release archives are produced as ZIP files outside version control, so the workflow's archive is never committed.
 
