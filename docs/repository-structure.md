@@ -8,7 +8,8 @@ stellaris-ui-character-traits/
 │   ├── cover.png                       # Repository/listing cover art (distribution metadata)
 │   ├── FUNDING.yml                     # Sponsorship configuration
 │   └── workflows/
-│       └── github-release.yml          # Release archive build and upload
+│       ├── github-release.yml          # Release archive build and upload
+│       └── steam-workshop-release.yml  # Steam Workshop release upload
 ├── .gitignore                          # Ignores **/*.zip (packaged release archives)
 ├── ARCHITECTURE.md                     # Root architecture document
 ├── CODE_OF_CONDUCT.md                  # Root policy document
@@ -46,7 +47,6 @@ The launcher resolves a mod body through the `path` field of a descriptor. Both 
 - The payload must remain in a directory whose name matches the `path` value's final segment.
 - Content changes are invisible to the launcher until the payload is delivered through a distribution channel or a local mod directory.
 - `.github/workflows/github-release.yml` archives the root descriptor together with the payload directory, so both must stay at the paths it names.
-
 ## Content-area responsibilities
 
 | Path | Shadowed vanilla target | Responsibility |
@@ -70,8 +70,8 @@ The files inside `common/traits/` are new, mod-namespaced files. Because Stellar
 
 | Absent artefact | Consequence |
 |-----------------|-------------|
-| Validation or test workflow | No automated validation; `.github/workflows/github-release.yml` packages and publishes releases and checks nothing |
-| Build or packaging scripts | Release archives are built by the workflow from the tagged content, negating a local packaging step |
+| Validation or test workflow | No automated validation; `.github/workflows/github-release.yml` and `.github/workflows/steam-workshop-release.yml` package and publish releases and check nothing |
+| Build or packaging scripts | Release archives are built by the workflows from the tagged content, negating a local packaging step |
 | Test directories or harnesses | No automated verification of content consistency |
 | `ROADMAP.md`, `CHANGELOG.md`, `SUPPORT.md`, `FAQ.md` | Those README conditions are unmet |
 | Non-English localisation directories | The mod is English-only |

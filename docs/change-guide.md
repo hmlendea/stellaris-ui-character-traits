@@ -166,14 +166,14 @@ The full procedure, in order.
 
 ## Release process
 
-`.github/workflows/github-release.yml` automates the GitHub Releases channel. It runs when a GitHub release is published, or on a manual dispatch with a `tag` input, and it writes the version into both descriptors, builds `ui-character-traits_<version>.zip` from `ui-character-traits/` and `ui-character-traits.mod`, and attaches the archive to the release. Steam Workshop, Paradox Mods, and Nexus Mods remain manual uploads.
+`.github/workflows/github-release.yml` automates the GitHub Releases channel. It runs when a GitHub release is published, or on a manual dispatch with a `tag` input, and it writes the version into both descriptors, builds `ui-character-traits_<version>.zip` from `ui-character-traits/` and `ui-character-traits.mod`, and attaches the archive to the release. `.github/workflows/steam-workshop-release.yml` automates the Steam Workshop channel on a `v*.*.*` tag push or manual dispatch, writing the version into both descriptors and uploading the content directory to Workshop item `2048878128`. Paradox Mods and Nexus Mods remain manual uploads.
 
 To publish:
 
 1. Update both descriptors' `supported_version` if targeting a new game-version family.
 2. Run the cross-checks against the tagged contents, not just the working tree.
-3. Tag the revision and publish the GitHub release; the workflow writes the version, builds the archive, and attaches it.
-4. Upload the same content set manually to Steam Workshop, Paradox Mods, and Nexus Mods so that no channel drifts.
+3. Tag the revision and publish the GitHub release; `.github/workflows/steam-workshop-release.yml` publishes the tag to Steam Workshop, and `.github/workflows/github-release.yml` writes the version, builds the archive, and attaches it.
+4. Upload the same content set manually to Paradox Mods and Nexus Mods so that no channel drifts.
 
 ## Documentation synchronisation
 

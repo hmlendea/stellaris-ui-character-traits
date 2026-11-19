@@ -299,7 +299,7 @@ The mod is a static archive with no process topology, no persistent state, and n
 |---------|----------------|---------------------------|
 | Process topology | None; the mod is content loaded by the game process | No startup, shutdown, or lifecycle responsibility belongs to the repository |
 | Deployment unit | The `ui-character-traits/` payload directory plus the root `.mod` descriptor | Manual extraction and platform-based installation deliver the same artefact |
-| Distribution channels | Steam Workshop, Paradox Mods, Nexus Mods, and GitHub Releases | Channel metadata is maintained outside the repository; the payload is identical for all channels |
+| Distribution channels | Steam Workshop, Paradox Mods, Nexus Mods, and GitHub Releases | Steam Workshop and GitHub Releases publication is automated by `.github/workflows/steam-workshop-release.yml` and `.github/workflows/github-release.yml`; Paradox Mods and Nexus Mods channel metadata is maintained outside the repository; the payload is identical for all channels |
 | Persistent state | None owned by the mod; playset enablement and save state belong to the game | Disabling or removing the mod affects existing saves that reference its traits |
 | Recovery | Re-extraction of the payload or platform-managed reinstallation | No rollback mechanism exists inside the repository beyond repository history |
 | Versioning | Git tags `v1.0`, `v1.0.1`, and `v1.0.2`; the descriptor declares `supported_version="v4.5.*"` | Release tags and the declared supported game version evolve independently and can disagree |
@@ -317,7 +317,7 @@ The mod is a static archive with no process topology, no persistent state, and n
 
 ## ✅ Testing and Verification
 
-No automated test suite, build script, or validation workflow exists in this repository. The only workflow, `.github/workflows/github-release.yml`, packages the tagged content and attaches the release archive; it validates nothing. Verification is manual and performed against a local Stellaris installation.
+No automated test suite, build script, or validation workflow exists in this repository. The existing workflows, `.github/workflows/github-release.yml` and `.github/workflows/steam-workshop-release.yml`, package the tagged content and publish it to GitHub Releases and Steam Workshop; they validate nothing. Verification is manual and performed against a local Stellaris installation.
 
 Manual verification covers: the descriptor is recognised by the launcher and the mod can be enabled; every trait in `common/traits/` appears in the leader trait interface with the expected name and description; eligibility conditions admit and reject leaders of the intended ethics, authorities, and classes; `opposites` exclusions prevent mutually exclusive traits from coexisting; modifiers take effect as declared; icon references render as intended, including the three governor traits that reuse vanilla icons; and the game error log reports no trait or localisation errors attributable to this mod.
 
@@ -356,7 +356,7 @@ The extension must preserve the `ui_trait_` identifier prefix, must not reuse an
 | Localisation | `ui-character-traits/localisation/english/ui-traits_l_english.yml` |
 | Trait Icons | `ui-character-traits/gfx/interface/icons/traits/` |
 | Thumbnail | `ui-character-traits/thumbnail.png` |
-| Release Automation | `.github/workflows/github-release.yml` |
+| Release Automation | `.github/workflows/github-release.yml`, `.github/workflows/steam-workshop-release.yml` |
 | Distribution Assets | `.github/cover.png`, `.github/FUNDING.yml` |
 
 ## 📚 Related Documentation
