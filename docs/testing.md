@@ -2,7 +2,7 @@
 
 ## Automated tests
 
-None. The repository contains no test framework, no test files, no test fixtures, no validation workflow, and no assertion harness. Its only workflow, `.github/workflows/github-release.yml`, packages the tagged content and attaches the release archive. The directory listing shows no `tests/`, `test/`, or `spec/` directory.
+None. The repository contains no test framework, no test files, no test fixtures, no validation workflow, and no assertion harness. Its workflows, `.github/workflows/github-release.yml` and `.github/workflows/steam-workshop-release.yml`, package the tagged content and publish it to GitHub Releases and Steam Workshop. The directory listing shows no `tests/`, `test/`, or `spec/` directory.
 
 | Test category | Status |
 |---------------|--------|
@@ -92,7 +92,7 @@ The highest-value, lowest-cost additions, in order:
 
 1. A script that performs checks S1-S3 (identifier and localisation key pairing). This directly catches three live defects.
 2. A script that performs S4-S6 (icon and cross-reference resolution). This prevents silent exclusion and icon failures.
-3. A workflow that runs the scripts on push and pull request, since none exists today.
+3. A workflow that runs the scripts on push and pull request; the existing workflows publish releases and validate nothing.
 
 ## Related documents
 

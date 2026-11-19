@@ -25,7 +25,7 @@ The repository owns the following content, and nothing else:
 The repository deliberately does not own:
 
 - **Trait behaviour semantics.** Eligibility evaluation, exclusion enforcement, modifier application, and trait acquisition are engine-owned. No logic can be expressed in the content.
-- **Build, packaging, or release automation.** No build script or packaging manifest exists; `.github/workflows/github-release.yml` packages the tagged content and attaches it to the GitHub release, and the Steam Workshop, Paradox Mods, and Nexus Mods listings remain manual.
+- **Build, packaging, or release automation.** No build script or packaging manifest exists; `.github/workflows/github-release.yml` attaches the release archive to the GitHub release and `.github/workflows/steam-workshop-release.yml` publishes the tagged content to Steam Workshop, while the Paradox Mods and Nexus Mods listings remain manual.
 - **Test automation or consistency checking.** Verification is manual and in-game.
 - **Platform metadata.** Steam Workshop, Paradox Mods, and Nexus Mods listing content is maintained outside the repository.
 - **Localisation beyond English.** Only `localisation/english/` is present.

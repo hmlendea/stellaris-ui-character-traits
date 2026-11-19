@@ -127,9 +127,9 @@ one that uses a `self_modifier`.
 
 ## No automated validation
 
-**Decision.** The repository contains no build, test, or validation workflow. Its only workflow, `.github/workflows/github-release.yml`, packages the tagged content and attaches the release archive; it validates nothing.
+**Decision.** The repository contains no build, test, or validation workflow. Its only workflows, `.github/workflows/github-release.yml` and `.github/workflows/steam-workshop-release.yml`, package the tagged content and publish it to GitHub Releases and Steam Workshop; they validate nothing.
 
-**Evidence.** No build manifest, no test directory, and no validation workflow exist. `.github/workflows/` contains only `github-release.yml`.
+**Evidence.** No build manifest, no test directory, and no validation workflow exist. `.github/workflows/` contains only `github-release.yml` and `steam-workshop-release.yml`.
 
 **Rationale (inferred).** The content set is small enough to review by hand, and the mod predates the addition of the `.github/` directory, which originally contained only funding and cover assets.
 

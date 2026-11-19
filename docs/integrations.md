@@ -6,7 +6,7 @@
 |-------------|-----------|---------------|---------|----------|-------|
 | Stellaris launcher | Inbound | Stellaris 4.5.x | Registers the mod, validates `supported_version`, shows it in the playset | Required | External |
 | Stellaris game engine | Inbound | Stellaris 4.5.x | Parses, resolves, and renders all mod content | Required | External |
-| Steam Workshop | Inbound delivery | Platform-managed | Distributes the mod (item 2048878128) | One channel required | External |
+| Steam Workshop | Inbound delivery | Platform-managed | Distributes the mod (item 2048878128); published by `.github/workflows/steam-workshop-release.yml` on a `v*.*.*` tag push or manual dispatch | One channel required | External |
 | Paradox Mods | Inbound delivery | Platform-managed | Distributes the mod (mod 34606) | One channel required | External |
 | Nexus Mods | Inbound delivery | Platform-managed | Distributes the mod (mod 90) | One channel required | External |
 | GitHub Releases | Inbound delivery | Platform-managed | Distributes release archives | One channel required | External |
@@ -50,7 +50,7 @@ The mod initiates no outbound interaction at any point. Every integration is con
 
 | Platform | What the repository supplies | What lives outside the repository |
 |----------|------------------------------|----------------------------------|
-| Steam Workshop | The payload and the descriptor | Item listing, description, tags, screenshots, version notes |
+| Steam Workshop | The payload and the descriptor | Item listing, description, tags, screenshots, version notes; uploaded by `.github/workflows/steam-workshop-release.yml` |
 | Paradox Mods | The payload and the descriptor | Listing metadata |
 | Nexus Mods | The payload and the descriptor | Listing metadata |
 | GitHub Releases | The payload, the descriptor, Git tags, and the release archive built by `.github/workflows/github-release.yml` | Release notes beyond the tag annotation |
