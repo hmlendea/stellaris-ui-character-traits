@@ -15,7 +15,7 @@ definition names a sprite that resolves to it.
 | Sprite definitions | `ui-character-traits/interface/ui_character_traits.gfx` |
 | Texture files | 45 DDS images |
 | Subdirectories | none (flat) |
-| Format | DDS, uncompressed ARGB8888, 29x29 — the size the base game uses for leader trait icons |
+| Format | DDS, uncompressed ARGB8888, 29x29 — black RGB with the glyph carried in the alpha channel, matching the base game's leader trait masks |
 | Traits with a declared icon | 47 of 47 |
 | Sprites declared by this mod | 44 (one per referenced shipped texture) |
 | Vanilla sprites reused | 3 (`GFX_leader_trait_engineering_focus`, `GFX_leader_trait_physics_focus`, `GFX_leader_trait_society_focus`) |
@@ -59,11 +59,18 @@ the sprite indirection above.
 
 ### Tint handling
 
-`trait/icon` tints the artwork layer with `trait_icon_default`. The base game's icons are
-mostly greyscale masks, which is what that tint is designed for. The mod's icons are already
-full-colour artwork, and the engine renders them correctly through the same script — the
-vanilla set includes a handful of coloured icons (`storm_rider.dds`, `intemporal.dds`) that
-rely on it too. No mod-specific icon script is therefore needed.
+`trait/icon` stacks the artwork layer over a `GFX_trait_bg` disc coloured by
+`trait_bg_default` (a teal fill), then multiplies the artwork by `trait_icon_default`
+(`{ 0 0 0 191 }`). Because the tint is a multiply, the artwork must be a **mask**: RGB black
+everywhere, with the glyph shape carried in the alpha channel. Vanilla leader icons under
+`gfx/interface/icons/traits/leader_trait_icons/` follow exactly that convention — a single
+flat black colour across every pixel, with only alpha varying.
+
+An RGB-coloured texture survives the multiply as a dark smear: the tint drives all three
+channels to zero wherever the artwork is opaque, so a colour-baked icon renders as a blob
+inside the teal disc. That was the rendering defect in the earlier 2.0 icon set, which shipped
+dark-glyph-on-coloured-disc artwork. Keeping the artwork as a mask is therefore a requirement,
+not a stylistic choice.
 
 ## Icon inventory
 
@@ -122,6 +129,8 @@ stable contract; the texture path is an implementation detail behind it.
 - Icon textures must be DDS. The engine does not convert other formats at runtime.
 - Icon textures must be 29x29 to match the base game's leader trait icon size; a different
   size scales unpredictably inside the layered icon.
+- Icon textures must be masks: RGB black, glyph in alpha. Any other colouring is multiplied
+  to black by `trait_icon_default` and renders as a solid blob.
 
 ## Related documents
 

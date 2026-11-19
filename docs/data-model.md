@@ -74,7 +74,7 @@ vanilla 4.5 modifier vocabulary. Grouping by target:
 | Ship and fleet | `ship_weapon_damage`, `ship_hull_mult`, `ship_speed_mult`, `ship_fire_rate_mult`, `ship_weapon_range_mult`, `ship_disengage_chance_mult`, `ship_sensor_range_add`, `ship_anomaly_generation_chance_mult`, `science_ship_survey_speed` |
 | Army and defence | `army_damage_mult`, `army_morale`, `army_defense_damage_mult`, `planet_army_build_speed_mult` |
 | Planet output | `planet_jobs_energy_produces_mult`, `planet_jobs_minerals_produces_mult`, `planet_jobs_alloys_produces_mult`, `planet_jobs_consumer_goods_produces_mult`, `planet_jobs_unity_produces_mult`, `planet_jobs_engineering_research_produces_mult`, `planet_jobs_physics_research_produces_mult`, `planet_jobs_society_research_produces_mult`, `planet_metallurgists_produces_mult`, `planet_chemists_produces_mult`, `planet_amenities_mult` |
-| Planet social state | `planet_stability_add`, `planet_crime_add`, `planet_immigration_pull_mult`, `pop_happiness`, `logistic_growth_mult`, `planet_pop_assembly_mult` |
+| Planet social state | `planet_stability_add`, `planet_crime_add`, `pop_ethic_xenophile_attraction_mult`, `pop_happiness`, `logistic_growth_mult`, `planet_pop_assembly_mult` |
 | Pop upkeep and ethics | `planet_pops_consumer_goods_upkeep_mult`, `planet_pops_robotics_upkeep_mult`, `pop_ethic_authoritarian_attraction_mult`, `pop_ethic_egalitarian_attraction_mult`, `pop_ethic_militarist_attraction_mult`, `pop_ethic_pacifist_attraction_mult`, `pop_ethic_materialist_attraction_mult`, `pop_ethic_spiritualist_attraction_mult`, `pop_ethic_xenophile_attraction_mult`, `pop_ethic_xenophobe_attraction_mult`, `pop_government_ethic_attraction` |
 | Construction speed | `planet_building_build_speed_mult`, `planet_building_stronghold_build_speed_mult`, `planet_district_city_build_speed_mult`, `planet_district_generator_build_speed_mult` |
 | Country | `country_influence_produces_mult`, `country_trust_growth`, `empire_size_add` |
@@ -95,7 +95,7 @@ The following pre-4.x modifiers were removed from the game engine and replaced i
 | `country_admin_cap_add` | `empire_size_add` (inverted sign; the cap concept became an empire-size modifier) |
 | `pop_growth_speed` | `logistic_growth_mult` |
 | `pop_assembly_speed` | `planet_pop_assembly_mult` |
-| `planet_immigration_pull_mult` | retained — still current |
+| `planet_immigration_pull_mult` | `pop_ethic_xenophile_attraction_mult` / `pop_ethic_xenophobe_attraction_mult` (the pull modifier is not registered in 4.5; species-attitude attraction carries the same intent) |
 | `planet_culture_workers_produces_mult` | `planet_jobs_unity_produces_mult` (culture workers were folded into unity jobs) |
 | `planet_building_foundry_1_build_speed_mult` | `planet_building_build_speed_mult` |
 | `planet_building_chemical_plant_build_speed_mult` | `planet_building_build_speed_mult` |

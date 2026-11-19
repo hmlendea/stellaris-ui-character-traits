@@ -321,7 +321,7 @@ councilors.
 | Display name | Racist |
 | Icon | `GFX_ui_trait_governor_racist` |
 | Class | `official commander scientist` |
-| Modifiers (planet_modifier) | `planet_immigration_pull_mult = -0.4` |
+| Modifiers (planet_modifier) | `pop_ethic_xenophile_attraction_mult = -0.4`, `pop_ethic_xenophobe_attraction_mult = 0.1` |
 | Exclusions | `ui_trait_governor_ideologue_xenophile`, `ui_trait_governor_ideologue_pacifist`, `ui_trait_governor_open_armed` |
 | Eligibility | none |
 
@@ -332,7 +332,7 @@ councilors.
 | Display name | Open-armed |
 | Icon | `GFX_ui_trait_governor_open_armed` |
 | Class | `official commander scientist` |
-| Modifiers (planet_modifier) | `planet_immigration_pull_mult = 0.4` |
+| Modifiers (planet_modifier) | `pop_ethic_xenophile_attraction_mult = 0.4`, `pop_ethic_xenophobe_attraction_mult = -0.1` |
 | Exclusions | `ui_trait_governor_ideologue_xenophobe`, `ui_trait_governor_racist` |
 | Eligibility | none |
 

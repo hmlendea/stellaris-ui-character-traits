@@ -651,7 +651,8 @@ ui_trait_governor_racist = {
     }
 
     planet_modifier = {
-        planet_immigration_pull_mult = -0.4
+        pop_ethic_xenophile_attraction_mult = -0.4
+        pop_ethic_xenophobe_attraction_mult = 0.1
     }
 
     leader_class = { official commander scientist }
@@ -675,7 +676,8 @@ ui_trait_governor_open_armed = {
     }
 
     planet_modifier = {
-        planet_immigration_pull_mult = 0.4
+        pop_ethic_xenophile_attraction_mult = 0.4
+        pop_ethic_xenophobe_attraction_mult = -0.1
     }
 
     leader_class = { official commander scientist }
